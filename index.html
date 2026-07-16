@@ -1,1700 +1,712 @@
 <!DOCTYPE html>
 
 <html lang="hu">
-
 <head>
-
-```
 <meta charset="UTF-8">
-
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>FefeX Gaming | Hivatalos oldal</title>
 
-<link
-    rel="preconnect"
-    href="https://fonts.googleapis.com"
->
-
-<link
-    rel="preconnect"
-    href="https://fonts.gstatic.com"
-    crossorigin
->
-
-<link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
-    rel="stylesheet"
->
-
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
-    :root {
+:root {
+    --red: #ff1744;
+    --red-dark: #c90032;
+    --black: #07090d;
+    --dark: #0e1118;
+    --card: #151923;
+    --text: #ffffff;
+    --muted: #a8afbd;
+    --border: rgba(255,255,255,0.1);
+}
 
-        --red: #ff1744;
-        --red-dark: #d50032;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        --black: #07090d;
-        --dark: #0d1017;
-        --card: #141821;
+html {
+    scroll-behavior: smooth;
+}
 
-        --white: #ffffff;
-        --muted: #a8afbd;
+body {
+    font-family: 'Inter', Arial, sans-serif;
+    background: var(--black);
+    color: var(--text);
+}
 
-        --border:
-            rgba(255,255,255,0.09);
+/* NAVIGÁCIÓ */
 
-    }
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-    * {
+    padding: 18px 7%;
 
-        margin: 0;
-        padding: 0;
+    background: rgba(7, 9, 13, 0.9);
+    backdrop-filter: blur(18px);
 
-        box-sizing: border-box;
+    border-bottom: 1px solid var(--border);
+}
 
-    }
+.logo {
+    font-size: 24px;
+    font-weight: 900;
+    white-space: nowrap;
+}
 
+.logo span {
+    color: var(--red);
+}
 
-    html {
+nav ul {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+}
 
-        scroll-behavior: smooth;
+nav a {
+    color: var(--muted);
+    text-decoration: none;
+    font-weight: 700;
+    transition: 0.25s;
+}
 
-    }
+nav ul a:hover {
+    color: var(--red);
+}
 
+.nav-button {
+    padding: 11px 18px;
+    background: var(--red);
+    color: white !important;
+    border-radius: 8px;
+}
 
-    body {
+.nav-button:hover {
+    background: var(--red-dark);
+    transform: translateY(-2px);
+}
 
-        font-family:
-            'Inter',
-            Arial,
-            sans-serif;
+/* HERO */
 
-        color: var(--white);
+.hero {
+    min-height: 700px;
 
-        background:
-            var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    }
+    text-align: center;
+    padding: 100px 20px;
 
+    background:
+        linear-gradient(
+            rgba(5, 7, 12, 0.72),
+            rgba(5, 7, 12, 0.95)
+        ),
+        url("background.jpg") center / cover no-repeat;
+}
 
-    /* NAVIGÁCIÓ */
+.hero-content {
+    max-width: 900px;
+}
+
+.badge {
+    display: inline-block;
+
+    padding: 9px 17px;
+    margin-bottom: 25px;
+
+    color: #ff718c;
+
+    background: rgba(255, 23, 68, 0.12);
+    border: 1px solid rgba(255, 23, 68, 0.45);
+    border-radius: 30px;
+
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.hero h1 {
+    margin-bottom: 25px;
+
+    font-size: clamp(45px, 8vw, 90px);
+    line-height: 1;
+    font-weight: 900;
+}
+
+.hero h1 span {
+    color: var(--red);
+    text-shadow: 0 0 35px rgba(255, 23, 68, 0.45);
+}
+
+.hero p {
+    max-width: 680px;
+    margin: auto;
+
+    color: var(--muted);
+    font-size: 19px;
+    line-height: 1.7;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 35px;
+}
+
+.button {
+    display: inline-block;
+
+    padding: 15px 24px;
+    border-radius: 9px;
+
+    text-decoration: none;
+    font-weight: 800;
+
+    transition: 0.25s;
+}
+
+.primary {
+    background: var(--red);
+    color: white;
+    box-shadow: 0 0 25px rgba(255, 23, 68, 0.25);
+}
+
+.primary:hover {
+    background: var(--red-dark);
+    transform: translateY(-4px);
+}
+
+.secondary {
+    color: white;
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,0.04);
+}
+
+.secondary:hover {
+    color: var(--red);
+    border-color: var(--red);
+}
+
+/* SZEKCIÓK */
+
+.section {
+    max-width: 1200px;
+    margin: auto;
+    padding: 100px 7%;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.section-title h2 {
+    margin-bottom: 12px;
+    font-size: 38px;
+}
+
+.section-title p {
+    color: var(--muted);
+}
+
+/* TARTALOM */
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.card {
+    padding: 30px;
+
+    background: linear-gradient(145deg, #171b25, #0e1117);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(255, 23, 68, 0.5);
+}
+
+.card-icon {
+    font-size: 42px;
+    margin-bottom: 20px;
+}
+
+.card h3 {
+    margin-bottom: 12px;
+    font-size: 21px;
+}
+
+.card p {
+    color: var(--muted);
+    line-height: 1.7;
+}
+
+/* VIDEÓK */
+
+.videos {
+    max-width: none;
+    background: linear-gradient(180deg, #0b0d13, #10131b);
+}
+
+.video-content {
+    max-width: 1150px;
+    margin: auto;
+}
+
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.video-card {
+    overflow: hidden;
+
+    color: white;
+    background: var(--card);
+
+    border: 1px solid var(--border);
+    border-radius: 16px;
+
+    text-decoration: none;
+
+    transition: 0.3s;
+}
+
+.video-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--red);
+    box-shadow: 0 20px 45px rgba(255, 23, 68, 0.2);
+}
+
+.thumbnail {
+    position: relative;
+    height: 210px;
+    overflow: hidden;
+    background: #222;
+}
+
+.thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: 0.4s;
+}
+
+.video-card:hover .thumbnail img {
+    transform: scale(1.08);
+    filter: brightness(0.65);
+}
+
+.play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 62px;
+    height: 62px;
+
+    transform: translate(-50%, -50%);
+
+    background: var(--red);
+    border-radius: 50%;
+
+    font-size: 25px;
+}
+
+.badge-label {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+
+    padding: 8px 12px;
+
+    background: rgba(0,0,0,0.8);
+    border-radius: 8px;
+
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.latest {
+    background: var(--red);
+}
+
+.video-info {
+    padding: 20px;
+}
+
+.video-info h3 {
+    margin-bottom: 8px;
+    font-size: 17px;
+    line-height: 1.4;
+}
+
+.video-info p {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+/* SHORTS */
+
+.shorts-section {
+    background: #090b10;
+}
+
+.shorts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+/* CTA */
+
+.cta {
+    padding: 100px 20px;
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255,23,68,0.16),
+            transparent 55%
+        );
+}
+
+.cta h2 {
+    margin-bottom: 15px;
+    font-size: 38px;
+}
+
+.cta p {
+    margin-bottom: 28px;
+    color: var(--muted);
+}
+
+/* FOOTER */
+
+footer {
+    padding: 30px 20px;
+
+    text-align: center;
+    color: #727988;
+
+    border-top: 1px solid var(--border);
+}
+
+/* MOBIL */
+
+@media (max-width: 850px) {
 
     nav {
-
-        position: sticky;
-
-        top: 0;
-
-        z-index: 1000;
-
-        display: flex;
-
-        align-items: center;
-
-        justify-content: space-between;
-
-        padding:
-            18px
-            7%;
-
-        background:
-            rgba(
-                7,
-                9,
-                13,
-                0.88
-            );
-
-        backdrop-filter:
-            blur(18px);
-
-        border-bottom:
-            1px solid
-            var(--border);
-
+        padding: 16px 20px;
     }
-
-
-    .logo {
-
-        font-size: 24px;
-
-        font-weight: 900;
-
-        white-space: nowrap;
-
-    }
-
-
-    .logo span {
-
-        color: var(--red);
-
-    }
-
 
     nav ul {
-
-        display: flex;
-
-        gap: 28px;
-
-        list-style: none;
-
+        display: none;
     }
 
-
-    nav ul a {
-
-        color: var(--muted);
-
-        text-decoration: none;
-
-        font-weight: 700;
-
-        transition: 0.25s;
-
+    .cards,
+    .video-grid,
+    .shorts-grid {
+        grid-template-columns: 1fr;
     }
-
-
-    nav ul a:hover {
-
-        color: var(--red);
-
-    }
-
-
-    .nav-button {
-
-        padding:
-            11px
-            18px;
-
-        background:
-            var(--red);
-
-        color:
-            white;
-
-        border-radius: 8px;
-
-        text-decoration: none;
-
-        font-weight: 800;
-
-        transition: 0.25s;
-
-    }
-
-
-    .nav-button:hover {
-
-        background:
-            var(--red-dark);
-
-        transform:
-            translateY(-2px);
-
-    }
-
-
-    /* HERO */
 
     .hero {
-
-        position: relative;
-
-        min-height: 720px;
-
-        display: flex;
-
-        align-items: center;
-
-        justify-content: center;
-
-        padding:
-            100px
-            20px;
-
-        text-align: center;
-
-        overflow: hidden;
-
-
-        background:
-
-            linear-gradient(
-                rgba(5, 7, 12, 0.72),
-                rgba(5, 7, 12, 0.92)
-            ),
-
-            url("background.jpg")
-
-            center / cover
-            no-repeat;
-
+        min-height: 650px;
     }
-
-
-    .hero::after {
-
-        content: "";
-
-        position: absolute;
-
-        inset: 0;
-
-        pointer-events: none;
-
-        background:
-
-            radial-gradient(
-                circle at center,
-                transparent 0%,
-                rgba(0,0,0,0.45) 100%
-            );
-
-    }
-
-
-    .hero-content {
-
-        position: relative;
-
-        z-index: 2;
-
-        max-width: 900px;
-
-        animation:
-            fadeUp
-            1s
-            ease;
-
-    }
-
-
-    .badge {
-
-        display: inline-block;
-
-        padding:
-            9px
-            16px;
-
-        margin-bottom:
-            25px;
-
-        color:
-            #ff718c;
-
-        background:
-            rgba(
-                255,
-                23,
-                68,
-                0.1
-            );
-
-        border:
-            1px solid
-            rgba(
-                255,
-                23,
-                68,
-                0.45
-            );
-
-        border-radius:
-            30px;
-
-        font-size:
-            13px;
-
-        font-weight:
-            800;
-
-    }
-
 
     .hero h1 {
-
-        margin-bottom:
-            25px;
-
-        font-size:
-            clamp(
-                45px,
-                8vw,
-                90px
-            );
-
-        line-height:
-            1;
-
-        font-weight:
-            900;
-
+        font-size: 50px;
     }
-
-
-    .hero h1 span {
-
-        color:
-            var(--red);
-
-        text-shadow:
-            0
-            0
-            35px
-            rgba(
-                255,
-                23,
-                68,
-                0.45
-            );
-
-    }
-
-
-    .hero p {
-
-        max-width:
-            680px;
-
-        margin:
-            auto;
-
-        color:
-            var(--muted);
-
-        font-size:
-            19px;
-
-        line-height:
-            1.7;
-
-    }
-
-
-    .hero-buttons {
-
-        display:
-            flex;
-
-        justify-content:
-            center;
-
-        flex-wrap:
-            wrap;
-
-        gap:
-            15px;
-
-        margin-top:
-            35px;
-
-    }
-
-
-    .button {
-
-        display:
-            inline-block;
-
-        padding:
-            15px
-            24px;
-
-        border-radius:
-            9px;
-
-        text-decoration:
-            none;
-
-        font-weight:
-            800;
-
-        transition:
-            0.25s;
-
-    }
-
-
-    .button-primary {
-
-        background:
-            var(--red);
-
-        color:
-            white;
-
-        box-shadow:
-            0
-            0
-            25px
-            rgba(
-                255,
-                23,
-                68,
-                0.25
-            );
-
-    }
-
-
-    .button-primary:hover {
-
-        transform:
-            translateY(-4px);
-
-        background:
-            var(--red-dark);
-
-        box-shadow:
-            0
-            0
-            35px
-            rgba(
-                255,
-                23,
-                68,
-                0.45
-            );
-
-    }
-
-
-    .button-secondary {
-
-        color:
-            white;
-
-        background:
-            rgba(
-                255,
-                255,
-                255,
-                0.03
-            );
-
-        border:
-            1px solid
-            var(--border);
-
-    }
-
-
-    .button-secondary:hover {
-
-        color:
-            var(--red);
-
-        border-color:
-            var(--red);
-
-    }
-
-
-    /* ÁLTALÁNOS SZEKCIÓ */
-
-    .section {
-
-        max-width:
-            1200px;
-
-        margin:
-            auto;
-
-        padding:
-            100px
-            7%;
-
-    }
-
-
-    .section-title {
-
-        margin-bottom:
-            45px;
-
-        text-align:
-            center;
-
-    }
-
-
-    .section-title h2 {
-
-        margin-bottom:
-            12px;
-
-        font-size:
-            38px;
-
-    }
-
-
-    .section-title p {
-
-        color:
-            var(--muted);
-
-    }
-
-
-    /* TARTALOM KÁRTYÁK */
-
-    .cards {
-
-        display:
-            grid;
-
-        grid-template-columns:
-            repeat(
-                3,
-                1fr
-            );
-
-        gap:
-            22px;
-
-    }
-
-
-    .card {
-
-        padding:
-            30px;
-
-        background:
-            linear-gradient(
-                145deg,
-                #171b25,
-                #0e1117
-            );
-
-        border:
-            1px solid
-            var(--border);
-
-        border-radius:
-            16px;
-
-        transition:
-            0.3s;
-
-    }
-
-
-    .card:hover {
-
-        transform:
-            translateY(
-                -8px
-            );
-
-        border-color:
-            rgba(
-                255,
-                23,
-                68,
-                0.5
-            );
-
-        box-shadow:
-            0
-            20px
-            45px
-            rgba(
-                0,
-                0,
-                0,
-                0.35
-            );
-
-    }
-
-
-    .card-icon {
-
-        margin-bottom:
-            20px;
-
-        font-size:
-            42px;
-
-    }
-
-
-    .card h3 {
-
-        margin-bottom:
-            12px;
-
-        font-size:
-            21px;
-
-    }
-
-
-    .card p {
-
-        color:
-            var(--muted);
-
-        line-height:
-            1.7;
-
-    }
-
-
-    /* VIDEÓK */
-
-    .videos {
-
-        max-width:
-            none;
-
-        background:
-            linear-gradient(
-                180deg,
-                #0b0d13,
-                #10131b
-            );
-
-    }
-
-
-    .video-content {
-
-        max-width:
-            1100px;
-
-        margin:
-            auto;
-
-    }
-
-
-    .video-grid {
-
-        display:
-            grid;
-
-        grid-template-columns:
-            repeat(
-                3,
-                1fr
-            );
-
-        gap:
-            24px;
-
-    }
-
-
-    .video-card {
-
-        overflow:
-            hidden;
-
-        color:
-            white;
-
-        background:
-            var(--card);
-
-        border:
-            1px solid
-            var(--border);
-
-        border-radius:
-            16px;
-
-        text-decoration:
-            none;
-
-        transition:
-            0.3s;
-
-    }
-
-
-    .video-card:hover {
-
-        transform:
-            translateY(
-                -8px
-            );
-
-        border-color:
-            var(--red);
-
-        box-shadow:
-            0
-            20px
-            45px
-            rgba(
-                255,
-                23,
-                68,
-                0.2
-            );
-
-    }
-
-
-    .video-thumbnail {
-
-        position:
-            relative;
-
-        height:
-            210px;
-
-        overflow:
-            hidden;
-
-        background:
-            #222;
-
-    }
-
-
-    .video-thumbnail img {
-
-        width:
-            100%;
-
-        height:
-            100%;
-
-        object-fit:
-            cover;
-
-        transition:
-            0.4s;
-
-    }
-
-
-    .video-card:hover
-    .video-thumbnail img {
-
-        transform:
-            scale(
-                1.08
-            );
-
-        filter:
-            brightness(
-                0.65
-            );
-
-    }
-
-
-    .play {
-
-        position:
-            absolute;
-
-        top:
-            50%;
-
-        left:
-            50%;
-
-        display:
-            flex;
-
-        align-items:
-            center;
-
-        justify-content:
-            center;
-
-        width:
-            62px;
-
-        height:
-            62px;
-
-        transform:
-            translate(
-                -50%,
-                -50%
-            );
-
-        background:
-            var(--red);
-
-        border-radius:
-            50%;
-
-        font-size:
-            25px;
-
-    }
-
-
-    .rank {
-
-        position:
-            absolute;
-
-        top:
-            14px;
-
-        left:
-            14px;
-
-        padding:
-            8px
-            12px;
-
-        background:
-            rgba(
-                0,
-                0,
-                0,
-                0.8
-            );
-
-        border-radius:
-            8px;
-
-        font-size:
-            13px;
-
-        font-weight:
-            800;
-
-    }
-
-
-    .latest-badge {
-
-        position:
-            absolute;
-
-        top:
-            14px;
-
-        left:
-            14px;
-
-        padding:
-            8px
-            12px;
-
-        background:
-            var(--red);
-
-        border-radius:
-            8px;
-
-        font-size:
-            13px;
-
-        font-weight:
-            800;
-
-    }
-
-
-    .video-info {
-
-        padding:
-            20px;
-
-    }
-
-
-    .video-info h3 {
-
-        margin-bottom:
-            8px;
-
-        font-size:
-            17px;
-
-        line-height:
-            1.4;
-
-    }
-
-
-    .video-info p {
-
-        color:
-            var(--muted);
-
-        font-size:
-            14px;
-
-    }
-
-
-    .latest-title {
-
-        margin-top:
-            100px;
-
-    }
-
-
-    .latest-video {
-
-        max-width:
-            700px;
-
-        margin:
-            auto;
-
-    }
-
-
-    /* CTA */
-
-    .cta {
-
-        padding:
-            100px
-            20px;
-
-        text-align:
-            center;
-
-        background:
-
-            radial-gradient(
-                circle at center,
-                rgba(
-                    255,
-                    23,
-                    68,
-                    0.16
-                ),
-                transparent 55%
-            );
-
-    }
-
-
-    .cta h2 {
-
-        margin-bottom:
-            15px;
-
-        font-size:
-            38px;
-
-    }
-
-
-    .cta p {
-
-        margin-bottom:
-            28px;
-
-        color:
-            var(--muted);
-
-    }
-
-
-    /* FOOTER */
-
-    footer {
-
-        padding:
-            30px
-            20px;
-
-        text-align:
-            center;
-
-        color:
-            #727988;
-
-        border-top:
-            1px solid
-            var(--border);
-
-    }
-
-
-    /* ANIMÁCIÓ */
-
-    @keyframes fadeUp {
-
-        from {
-
-            opacity:
-                0;
-
-            transform:
-                translateY(
-                    25px
-                );
-
-        }
-
-        to {
-
-            opacity:
-                1;
-
-            transform:
-                translateY(
-                    0
-                );
-
-        }
-
-    }
-
-
-    /* MOBIL */
-
-    @media (
-        max-width:
-        850px
-    ) {
-
-        nav {
-
-            padding:
-                16px
-                20px;
-
-        }
-
-
-        nav ul {
-
-            display:
-                none;
-
-        }
-
-
-        .cards,
-        .video-grid {
-
-            grid-template-columns:
-                1fr;
-
-        }
-
-
-        .hero {
-
-            min-height:
-                650px;
-
-        }
-
-
-        .hero h1 {
-
-            font-size:
-                50px;
-
-        }
-
-
-        .latest-title {
-
-            margin-top:
-                70px;
-
-        }
-
-    }
-
+}
 </style>
-```
 
 </head>
 
 <body>
 
-```
 <!-- NAVIGÁCIÓ -->
 
 <nav>
 
-    <div class="logo">
+```
+<div class="logo">
+    🎮 Fefe<span>X</span> Gaming
+</div>
 
-        🎮 Fefe<span>X</span> Gaming
+<ul>
+    <li><a href="#fooldal">Főoldal</a></li>
+    <li><a href="#tartalom">Tartalom</a></li>
+    <li><a href="#videok">Videók</a></li>
+    <li><a href="#shorts">Shorts</a></li>
+</ul>
 
-    </div>
-
-
-    <ul>
-
-        <li>
-
-            <a href="#fooldal">
-
-                Főoldal
-
-            </a>
-
-        </li>
-
-
-        <li>
-
-            <a href="#tartalom">
-
-                Tartalom
-
-            </a>
-
-        </li>
-
-
-        <li>
-
-            <a href="#videok">
-
-                Videók
-
-            </a>
-
-        </li>
-
-    </ul>
-
-
-    <a
-
-        class="nav-button"
-
-        href="https://www.youtube.com/@IgaziFefeX"
-
-        target="_blank"
-
-        rel="noopener"
-
-    >
-
-        🔴 YouTube
-
-    </a>
+<a
+    class="nav-button"
+    href="https://www.youtube.com/@IgaziFefeX"
+    target="_blank"
+    rel="noopener"
+>
+    🔴 YouTube
+</a>
+```
 
 </nav>
 
-
 <!-- HERO -->
 
-<section
+<section class="hero" id="fooldal">
 
-    class="hero"
+```
+<div class="hero-content">
 
-    id="fooldal"
+    <div class="badge">
+        🎮 HIVATALOS FEFEX GAMING OLDAL
+    </div>
 
->
+    <h1>
+        Üdv a
+        <span>FefeX Gaming</span>
+        világában!
+    </h1>
 
-    <div class="hero-content">
+    <p>
+        Gaming, Shorts, AI és még sok más.
+        Nézd meg a videókat, fedezd fel a Shortsokat,
+        és csatlakozz a FefeX Gaming közösségéhez!
+    </p>
 
+    <div class="buttons">
 
-        <div class="badge">
+        <a
+            class="button primary"
+            href="https://www.youtube.com/@IgaziFefeX"
+            target="_blank"
+            rel="noopener"
+        >
+            ▶️ YouTube-csatorna
+        </a>
 
-            🎮 HIVATALOS FEFEX GAMING OLDAL
-
-        </div>
-
-
-        <h1>
-
-            Üdv a
-
-            <span>
-
-                FefeX Gaming
-
-            </span>
-
-            világában!
-
-        </h1>
-
-
-        <p>
-
-            Gaming, Shorts, AI és még sok más.
-
-            Nézd meg a tartalmakat,
-
-            kövesd a csatornát,
-
-            és csatlakozz a FefeX Gaming közösségéhez!
-
-        </p>
-
-
-        <div class="hero-buttons">
-
-
-            <a
-
-                class="button button-primary"
-
-                href="https://www.youtube.com/@IgaziFefeX"
-
-                target="_blank"
-
-                rel="noopener"
-
-            >
-
-                ▶️ Csatorna megnyitása
-
-            </a>
-
-
-            <a
-
-                class="button button-secondary"
-
-                href="#videok"
-
-            >
-
-                🔥 Videók
-
-            </a>
-
-        </div>
-
+        <a
+            class="button secondary"
+            href="#videok"
+        >
+            🔥 Videók megtekintése
+        </a>
 
     </div>
 
-</section>
+</div>
+```
 
+</section>
 
 <!-- TARTALOM -->
 
-<section
+<section class="section" id="tartalom">
 
-    class="section"
+```
+<div class="section-title">
 
-    id="tartalom"
+    <h2>🔥 Mit találsz nálam?</h2>
 
->
+    <p>
+        Minden, ami FefeX Gaming.
+    </p>
 
+</div>
 
-    <div class="section-title">
+<div class="cards">
 
-        <h2>
+    <div class="card">
 
-            🔥 Mit találsz nálam?
+        <div class="card-icon">🎮</div>
 
-        </h2>
-
+        <h3>Gaming</h3>
 
         <p>
-
-            A FefeX Gaming tartalmai egy helyen.
-
+            Izgalmas játékok, gameplayek,
+            kihívások és emlékezetes pillanatok.
         </p>
 
     </div>
 
+    <div class="card">
 
-    <div class="cards">
+        <div class="card-icon">⚡</div>
 
+        <h3>Shorts</h3>
 
-        <div class="card">
-
-            <div class="card-icon">
-
-                🎮
-
-            </div>
-
-
-            <h3>
-
-                Gaming
-
-            </h3>
-
-
-            <p>
-
-                Izgalmas játékok,
-
-                gameplayek,
-
-                kihívások és emlékezetes pillanatok.
-
-            </p>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="card-icon">
-
-                ⚡
-
-            </div>
-
-
-            <h3>
-
-                Shorts
-
-            </h3>
-
-
-            <p>
-
-                Rövid,
-
-                gyors és szórakoztató videók
-
-                a legjobb pillanatokról.
-
-            </p>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="card-icon">
-
-                🤖
-
-            </div>
-
-
-            <h3>
-
-                AI & Tech
-
-            </h3>
-
-
-            <p>
-
-                Érdekes AI-témák,
-
-                technológia és kreatív ötletek.
-
-            </p>
-
-        </div>
-
+        <p>
+            Rövid, gyors és szórakoztató videók
+            a legjobb pillanatokról.
+        </p>
 
     </div>
 
-</section>
+    <div class="card">
 
+        <div class="card-icon">🤖</div>
+
+        <h3>AI & Tech</h3>
+
+        <p>
+            Érdekes AI-témák, technológia
+            és kreatív ötletek.
+        </p>
+
+    </div>
+
+</div>
+```
+
+</section>
 
 <!-- VIDEÓK -->
 
-<section
+<section class="videos" id="videok">
 
-    class="videos"
+```
+<div class="video-content">
 
-    id="videok"
+    <div class="section-title">
 
->
+        <h2>🔥 Népszerű videók</h2>
 
-    <div class="video-content">
+        <p>
+            A FefeX Gaming legjobb tartalmai.
+        </p>
 
+    </div>
 
-        <div class="section-title">
-
-            <h2>
-
-                🔥 Top 3 legnépszerűbb videó
-
-            </h2>
-
-
-            <p>
-
-                A FefeX Gaming legjobb tartalmai.
-
-            </p>
-
-        </div>
-
-
-        <div class="video-grid">
-
-
-            <!-- TOP 1 -->
-
-            <a
-
-                class="video-card"
-
-                href="https://www.youtube.com/@IgaziFefeX"
-
-                target="_blank"
-
-                rel="noopener"
-
-            >
-
-                <div class="video-thumbnail">
-
-                    <img
-
-                        src="https://i.ytimg.com/vi/VIDEO_ID_1/hqdefault.jpg"
-
-                        alt="FefeX Gaming Top 1 videó"
-
-                    >
-
-
-                    <div class="rank">
-
-                        🥇 #1
-
-                    </div>
-
-
-                    <div class="play">
-
-                        ▶
-
-                    </div>
-
-                </div>
-
-
-                <div class="video-info">
-
-                    <h3>
-
-                        Top 1 legnépszerűbb videó
-
-                    </h3>
-
-
-                    <p>
-
-                        🔥 FefeX Gaming
-
-                    </p>
-
-                </div>
-
-            </a>
-
-
-            <!-- TOP 2 -->
-
-            <a
-
-                class="video-card"
-
-                href="https://www.youtube.com/@IgaziFefeX"
-
-                target="_blank"
-
-                rel="noopener"
-
-            >
-
-                <div class="video-thumbnail">
-
-                    <img
-
-                        src="https://i.ytimg.com/vi/VIDEO_ID_2/hqdefault.jpg"
-
-                        alt="FefeX Gaming Top 2 videó"
-
-                    >
-
-
-                    <div class="rank">
-
-                        🥈 #2
-
-                    </div>
-
-
-                    <div class="play">
-
-                        ▶
-
-                    </div>
-
-                </div>
-
-
-                <div class="video-info">
-
-                    <h3>
-
-                        Top 2 legnépszerűbb videó
-
-                    </h3>
-
-
-                    <p>
-
-                        🔥 FefeX Gaming
-
-                    </p>
-
-                </div>
-
-            </a>
-
-
-            <!-- TOP 3 -->
-
-            <a
-
-                class="video-card"
-
-                href="https://www.youtube.com/@IgaziFefeX"
-
-                target="_blank"
-
-                rel="noopener"
-
-            >
-
-                <div class="video-thumbnail">
-
-                    <img
-
-                        src="https://i.ytimg.com/vi/VIDEO_ID_3/hqdefault.jpg"
-
-                        alt="FefeX Gaming Top 3 videó"
-
-                    >
-
-
-                    <div class="rank">
-
-                        🥉 #3
-
-                    </div>
-
-
-                    <div class="play">
-
-                        ▶
-
-                    </div>
-
-                </div>
-
-
-                <div class="video-info">
-
-                    <h3>
-
-                        Top 3 legnépszerűbb videó
-
-                    </h3>
-
-
-                    <p>
-
-                        🔥 FefeX Gaming
-
-                    </p>
-
-                </div>
-
-            </a>
-
-        </div>
-
-
-        <!-- LEGÚJABB VIDEÓ -->
-
-        <div class="section-title latest-title">
-
-            <h2>
-
-                🆕 Legújabb videó
-
-            </h2>
-
-
-            <p>
-
-                A csatorna legfrissebb tartalma.
-
-            </p>
-
-        </div>
-
+    <div class="video-grid">
 
         <a
-
-            class="video-card latest-video"
-
-            href="https://www.youtube.com/@IgaziFefeX"
-
+            class="video-card"
+            href="https://www.youtube.com/watch?v=p-7he6DOw5U"
             target="_blank"
-
             rel="noopener"
-
         >
 
-            <div class="video-thumbnail">
+            <div class="thumbnail">
 
                 <img
-
-                    src="https://i.ytimg.com/vi/LATEST_VIDEO_ID/hqdefault.jpg"
-
-                    alt="FefeX Gaming legújabb videó"
-
+                    src="https://i.ytimg.com/vi/p-7he6DOw5U/hqdefault.jpg"
+                    alt="FefeX Gaming népszerű videó"
                 >
 
-
-                <div class="latest-badge">
-
-                    🆕 LEGÚJABB
-
+                <div class="badge-label">
+                    🥇 NÉPSZERŰ
                 </div>
 
-
-                <div class="play">
-
-                    ▶
-
-                </div>
+                <div class="play">▶</div>
 
             </div>
-
 
             <div class="video-info">
 
                 <h3>
-
-                    A legújabb FefeX Gaming videó
-
+                    FefeX Gaming népszerű videó #1
                 </h3>
 
+                <p>
+                    🎮 FefeX Gaming
+                </p>
+
+            </div>
+
+        </a>
+
+        <a
+            class="video-card"
+            href="https://www.youtube.com/watch?v=x1f4SQ5ze0g"
+            target="_blank"
+            rel="noopener"
+        >
+
+            <div class="thumbnail">
+
+                <img
+                    src="https://i.ytimg.com/vi/x1f4SQ5ze0g/hqdefault.jpg"
+                    alt="FefeX Gaming népszerű videó"
+                >
+
+                <div class="badge-label">
+                    🥈 NÉPSZERŰ
+                </div>
+
+                <div class="play">▶</div>
+
+            </div>
+
+            <div class="video-info">
+
+                <h3>
+                    FefeX Gaming népszerű videó #2
+                </h3>
 
                 <p>
+                    🎮 FefeX Gaming
+                </p>
 
-                    🎮 FefeX Gaming · YouTube
+            </div>
 
+        </a>
+
+        <a
+            class="video-card"
+            href="https://www.youtube.com/watch?v=x78KOXLrz4A"
+            target="_blank"
+            rel="noopener"
+        >
+
+            <div class="thumbnail">
+
+                <img
+                    src="https://i.ytimg.com/vi/x78KOXLrz4A/hqdefault.jpg"
+                    alt="FefeX Gaming népszerű videó"
+                >
+
+                <div class="badge-label">
+                    🥉 NÉPSZERŰ
+                </div>
+
+                <div class="play">▶</div>
+
+            </div>
+
+            <div class="video-info">
+
+                <h3>
+                    FefeX Gaming népszerű videó #3
+                </h3>
+
+                <p>
+                    🎮 FefeX Gaming
                 </p>
 
             </div>
@@ -1703,101 +715,333 @@
 
     </div>
 
+    <!-- LEGÚJABB VIDEÓ -->
+
+    <div class="section-title" style="margin-top:100px;">
+
+        <h2>🆕 Legújabb videó</h2>
+
+        <p>
+            A csatorna legfrissebb tartalma.
+        </p>
+
+    </div>
+
+    <div class="video-grid">
+
+        <a
+            class="video-card"
+            href="https://www.youtube.com/watch?v=qqLNdh8GU74"
+            target="_blank"
+            rel="noopener"
+        >
+
+            <div class="thumbnail">
+
+                <img
+                    src="https://i.ytimg.com/vi/qqLNdh8GU74/hqdefault.jpg"
+                    alt="FefeX Gaming legújabb videó"
+                >
+
+                <div class="badge-label latest">
+                    🆕 LEGÚJABB
+                </div>
+
+                <div class="play">▶</div>
+
+            </div>
+
+            <div class="video-info">
+
+                <h3>
+                    A legújabb FefeX Gaming videó
+                </h3>
+
+                <p>
+                    🎮 FefeX Gaming · YouTube
+                </p>
+
+            </div>
+
+        </a>
+
+    </div>
+
+</div>
+```
+
 </section>
 
+<!-- SHORTS -->
+
+<section class="section shorts-section" id="shorts">
+
+```
+<div class="section-title">
+
+    <h2>📱 FefeX Gaming Shorts</h2>
+
+    <p>
+        Rövid, gyors és szórakoztató videók.
+    </p>
+
+</div>
+
+<div class="shorts-grid">
+
+    <a
+        class="video-card"
+        href="https://www.youtube.com/watch?v=vAubNtDC7rs"
+        target="_blank"
+        rel="noopener"
+    >
+
+        <div class="thumbnail">
+
+            <img
+                src="https://i.ytimg.com/vi/vAubNtDC7rs/hqdefault.jpg"
+                alt="FefeX Gaming Shorts 1"
+            >
+
+            <div class="badge-label">
+                📱 SHORTS
+            </div>
+
+            <div class="play">▶</div>
+
+        </div>
+
+        <div class="video-info">
+
+            <h3>
+                FefeX Gaming Shorts #1
+            </h3>
+
+            <p>
+                ⚡ YouTube Shorts
+            </p>
+
+        </div>
+
+    </a>
+
+    <a
+        class="video-card"
+        href="https://www.youtube.com/watch?v=3Ee7GodIiMM"
+        target="_blank"
+        rel="noopener"
+    >
+
+        <div class="thumbnail">
+
+            <img
+                src="https://i.ytimg.com/vi/3Ee7GodIiMM/hqdefault.jpg"
+                alt="FefeX Gaming Shorts 2"
+            >
+
+            <div class="badge-label">
+                📱 SHORTS
+            </div>
+
+            <div class="play">▶</div>
+
+        </div>
+
+        <div class="video-info">
+
+            <h3>
+                FefeX Gaming Shorts #2
+            </h3>
+
+            <p>
+                ⚡ YouTube Shorts
+            </p>
+
+        </div>
+
+    </a>
+
+    <a
+        class="video-card"
+        href="https://www.youtube.com/watch?v=HcX0xgUWml0"
+        target="_blank"
+        rel="noopener"
+    >
+
+        <div class="thumbnail">
+
+            <img
+                src="https://i.ytimg.com/vi/HcX0xgUWml0/hqdefault.jpg"
+                alt="FefeX Gaming Shorts 3"
+            >
+
+            <div class="badge-label">
+                📱 SHORTS
+            </div>
+
+            <div class="play">▶</div>
+
+        </div>
+
+        <div class="video-info">
+
+            <h3>
+                FefeX Gaming Shorts #3
+            </h3>
+
+            <p>
+                ⚡ YouTube Shorts
+            </p>
+
+        </div>
+
+    </a>
+
+    <a
+        class="video-card"
+        href="https://www.youtube.com/watch?v=zsJXD0edIbg"
+        target="_blank"
+        rel="noopener"
+    >
+
+        <div class="thumbnail">
+
+            <img
+                src="https://i.ytimg.com/vi/zsJXD0edIbg/hqdefault.jpg"
+                alt="FefeX Gaming Shorts 4"
+            >
+
+            <div class="badge-label">
+                📱 SHORTS
+            </div>
+
+            <div class="play">▶</div>
+
+        </div>
+
+        <div class="video-info">
+
+            <h3>
+                FefeX Gaming Shorts #4
+            </h3>
+
+            <p>
+                ⚡ YouTube Shorts
+            </p>
+
+        </div>
+
+    </a>
+
+    <a
+        class="video-card"
+        href="https://www.youtube.com/watch?v=OxsMJ3ml30U"
+        target="_blank"
+        rel="noopener"
+    >
+
+        <div class="thumbnail">
+
+            <img
+                src="https://i.ytimg.com/vi/OxsMJ3ml30U/hqdefault.jpg"
+                alt="FefeX Gaming Shorts 5"
+            >
+
+            <div class="badge-label">
+                📱 SHORTS
+            </div>
+
+            <div class="play">▶</div>
+
+        </div>
+
+        <div class="video-info">
+
+            <h3>
+                FefeX Gaming Shorts #5
+            </h3>
+
+            <p>
+                ⚡ YouTube Shorts
+            </p>
+
+        </div>
+
+    </a>
+
+    <a
+        class="video-card"
+        href="https://www.youtube.com/watch?v=BtOW0zSklF0"
+        target="_blank"
+        rel="noopener"
+    >
+
+        <div class="thumbnail">
+
+            <img
+                src="https://i.ytimg.com/vi/BtOW0zSklF0/hqdefault.jpg"
+                alt="FefeX Gaming Shorts 6"
+            >
+
+            <div class="badge-label">
+                📱 SHORTS
+            </div>
+
+            <div class="play">▶</div>
+
+        </div>
+
+        <div class="video-info">
+
+            <h3>
+                FefeX Gaming Shorts #6
+            </h3>
+
+            <p>
+                ⚡ YouTube Shorts
+            </p>
+
+        </div>
+
+    </a>
+
+</div>
+```
+
+</section>
 
 <!-- CTA -->
 
 <section class="cta">
 
-    <h2>
+```
+<h2>
+    🚀 Csatlakozz a FefeX Gaminghez!
+</h2>
 
-        🚀 Csatlakozz a FefeX Gaminghez!
+<p>
+    Iratkozz fel, és ne maradj le az új videókról!
+</p>
 
-    </h2>
-
-
-    <p>
-
-        Iratkozz fel,
-
-        és ne maradj le az új videókról!
-
-    </p>
-
-
-    <a
-
-        class="button button-primary"
-
-        href="https://www.youtube.com/@IgaziFefeX"
-
-        target="_blank"
-
-        rel="noopener"
-
-    >
-
-        🔴 Feliratkozás YouTube-on
-
-    </a>
+<a
+    class="button primary"
+    href="https://www.youtube.com/@IgaziFefeX"
+    target="_blank"
+    rel="noopener"
+>
+    🔴 Feliratkozás YouTube-on
+</a>
+```
 
 </section>
 
-
-<!-- FOOTER -->
-
 <footer>
 
-    © 2026 FefeX Gaming · Hivatalos oldal 🎮
-
-</footer>
+```
+© 2026 FefeX Gaming · Hivatalos oldal 🎮
 ```
 
-</body>
+</footer>
 
+</body>
 </html>
-<!-- TOP 1 -->
-<a
-    class="video-card"
-    href="https://www.youtube.com/watch?v=p-7he6DOw5U"
-    target="_blank"
->
-    <img
-        src="https://i.ytimg.com/vi/p-7he6DOw5U/hqdefault.jpg"
-        alt="FefeX Gaming Top 1 videó"
-    
-        <!-- TOP 2 -->
-<a
-    class="video-card"
-    href="https://www.youtube.com/watch?v=x1f4SQ5ze0g"
-    target="_blank"
->
-    <img
-        src="https://i.ytimg.com/vi/x1f4SQ5ze0g/hqdefault.jpg"
-        alt="FefeX Gaming Top 2 videó"
-    >
-</a>
-    <!-- TOP 3 -->
-<a
-    class="video-card"
-    href="https://www.youtube.com/watch?v=x78KOXLrz4A"
-    target="_blank"
->
-    <img
-        src="https://i.ytimg.com/vi/x78KOXLrz4A/hqdefault.jpg"
-        alt="FefeX Gaming Top 3 videó"
-    >
-</a>
-    <!-- LEGÚJABB -->
-<a
-    class="video-card"
-    href="https://www.youtube.com/watch?v=qqLNdh8GU74"
-    target="_blank"
->
-    <img
-        src="https://i.ytimg.com/vi/qqLNdh8GU74/hqdefault.jpg"
-        alt="FefeX Gaming legújabb videó"
-    >
-</a> 
-</a>
