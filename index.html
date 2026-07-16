@@ -8,9 +8,11 @@
 ```
 <title>FefeN Gaming | Hivatalos oldal</title>
 
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
+<style>
     * {
         margin: 0;
         padding: 0;
@@ -27,16 +29,14 @@
         color: #182230;
     }
 
-    /* NAVIGÁCIÓ */
-
     nav {
         position: sticky;
         top: 0;
         z-index: 1000;
 
         display: flex;
-        justify-content: space-between;
         align-items: center;
+        justify-content: space-between;
 
         padding: 18px 7%;
 
@@ -49,10 +49,10 @@
     .logo {
         font-size: 23px;
         font-weight: 800;
-        color: #202938;
     }
 
-    .logo span {
+    .logo span,
+    .hero h1 span {
         color: #ff3d55;
     }
 
@@ -73,29 +73,27 @@
         color: #ff3d55;
     }
 
-    .channel-button {
-        padding: 12px 19px;
+    .channel-button,
+    .main-button {
+        display: inline-block;
+        padding: 13px 20px;
 
         background: #ff3d55;
         color: white;
 
         border-radius: 10px;
-
         text-decoration: none;
         font-weight: 700;
-
-        box-shadow: 0 8px 20px rgba(255, 61, 85, 0.2);
 
         transition: 0.25s;
     }
 
-    .channel-button:hover {
-        transform: translateY(-2px);
+    .channel-button:hover,
+    .main-button:hover {
+        transform: translateY(-3px);
         background: #e52d45;
-        box-shadow: 0 12px 25px rgba(255, 61, 85, 0.3);
+        box-shadow: 0 12px 25px rgba(255, 61, 85, 0.25);
     }
-
-    /* FŐOLDAL */
 
     .hero {
         min-height: 560px;
@@ -105,7 +103,6 @@
         justify-content: center;
 
         text-align: center;
-
         padding: 80px 20px;
 
         background:
@@ -125,92 +122,54 @@
         display: inline-block;
 
         padding: 8px 15px;
-
         margin-bottom: 22px;
 
-        background: #ffffff;
-
+        background: white;
         border: 1px solid #e4e8ef;
-
         border-radius: 30px;
 
         color: #ff3d55;
-
         font-size: 14px;
         font-weight: 700;
     }
 
     .hero h1 {
-        font-size: clamp(42px, 8vw, 82px);
-
-        line-height: 1.05;
-
-        color: #182230;
-
         margin-bottom: 22px;
-    }
 
-    .hero h1 span {
-        color: #ff3d55;
+        font-size: clamp(42px, 8vw, 82px);
+        line-height: 1.05;
     }
 
     .hero p {
         max-width: 650px;
-
         margin: auto;
 
         color: #667386;
-
         font-size: 18px;
-
         line-height: 1.7;
     }
 
     .hero-buttons {
         display: flex;
-
         justify-content: center;
-
         gap: 14px;
-
         flex-wrap: wrap;
 
         margin-top: 32px;
     }
 
-    .main-button {
-        padding: 15px 25px;
-
-        background: #ff3d55;
-        color: white;
-
-        border-radius: 10px;
-
-        text-decoration: none;
-
-        font-weight: 700;
-
-        transition: 0.25s;
-    }
-
-    .main-button:hover {
-        transform: translateY(-3px);
-        background: #e52d45;
-    }
-
     .secondary-button {
-        padding: 15px 25px;
+        display: inline-block;
+
+        padding: 13px 20px;
 
         background: white;
-
         color: #303b4a;
 
         border: 1px solid #dfe4eb;
-
         border-radius: 10px;
 
         text-decoration: none;
-
         font-weight: 700;
 
         transition: 0.25s;
@@ -221,38 +180,29 @@
         color: #ff3d55;
     }
 
-    /* SZEKCIÓK */
-
     .section {
         max-width: 1200px;
-
         margin: auto;
-
         padding: 80px 7%;
     }
 
     .section-title {
         text-align: center;
-
         margin-bottom: 42px;
     }
 
     .section-title h2 {
-        font-size: 34px;
         margin-bottom: 10px;
+        font-size: 34px;
     }
 
     .section-title p {
         color: #748092;
     }
 
-    /* KÁRTYÁK */
-
     .cards {
         display: grid;
-
         grid-template-columns: repeat(3, 1fr);
-
         gap: 22px;
     }
 
@@ -260,9 +210,7 @@
         padding: 30px;
 
         background: white;
-
         border: 1px solid #e7ebf1;
-
         border-radius: 18px;
 
         box-shadow: 0 10px 30px rgba(25, 40, 65, 0.05);
@@ -271,14 +219,13 @@
     }
 
     .card:hover {
-        transform: translateY(-5px);
-
-        box-shadow: 0 15px 35px rgba(25, 40, 65, 0.1);
+        transform: translateY(-7px);
+        box-shadow: 0 15px 35px rgba(25, 40, 65, 0.12);
     }
 
     .card-icon {
-        font-size: 38px;
         margin-bottom: 18px;
+        font-size: 38px;
     }
 
     .card h3 {
@@ -290,40 +237,131 @@
         line-height: 1.6;
     }
 
-    /* VIDEÓK */
-
     .videos {
         background: white;
     }
 
-    .video-box {
-        background: #ffffff;
+    .video-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
+    }
 
-        border: 1px solid #e5e9ef;
-
-        border-radius: 18px;
-
+    .video-card {
+        display: block;
         overflow: hidden;
 
-        box-shadow: 0 10px 30px rgba(25, 40, 65, 0.06);
+        background: white;
+        color: #182230;
+
+        border: 1px solid #e5e9ef;
+        border-radius: 18px;
+
+        text-decoration: none;
+
+        box-shadow: 0 10px 25px rgba(25, 40, 65, 0.08);
+
+        transition: 0.3s;
     }
 
-    .video-box iframe {
-        display: block;
+    .video-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(255, 61, 85, 0.2);
+    }
 
+    .thumbnail {
+        position: relative;
+        height: 210px;
+        overflow: hidden;
+        background: #ddd;
+    }
+
+    .thumbnail img {
         width: 100%;
+        height: 100%;
 
-        min-height: 600px;
+        display: block;
+        object-fit: cover;
 
-        border: none;
+        transition: 0.4s;
     }
 
-    /* CTA */
+    .video-card:hover .thumbnail img {
+        transform: scale(1.08);
+        filter: brightness(0.7);
+    }
+
+    .play-button {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 68px;
+        height: 68px;
+
+        transform: translate(-50%, -50%);
+
+        border-radius: 50%;
+        background: white;
+        color: #ff003c;
+
+        font-size: 28px;
+
+        transition: 0.3s;
+    }
+
+    .video-card:hover .play-button {
+        transform: translate(-50%, -50%) scale(1.2);
+    }
+
+    .video-label {
+        position: absolute;
+        top: 14px;
+        right: 14px;
+
+        padding: 7px 10px;
+
+        border-radius: 7px;
+
+        background: rgba(0, 0, 0, 0.75);
+        color: white;
+
+        font-size: 11px;
+        font-weight: bold;
+    }
+
+    .video-info {
+        padding: 20px;
+    }
+
+    .video-info h3 {
+        margin-bottom: 8px;
+        font-size: 17px;
+        line-height: 1.4;
+    }
+
+    .video-info p {
+        color: #7b8796;
+        font-size: 14px;
+    }
+
+    .loading {
+        grid-column: 1 / -1;
+
+        padding: 40px;
+
+        text-align: center;
+        color: #7b8796;
+    }
 
     .cta {
-        text-align: center;
-
         padding: 80px 20px;
+
+        text-align: center;
 
         background:
             linear-gradient(
@@ -334,33 +372,34 @@
     }
 
     .cta h2 {
-        font-size: 34px;
         margin-bottom: 15px;
+        font-size: 34px;
     }
 
     .cta p {
-        color: #6d7888;
         margin-bottom: 25px;
+        color: #6d7888;
     }
-
-    /* FOOTER */
 
     footer {
         padding: 30px 20px;
 
         text-align: center;
 
-        background: #ffffff;
-
+        background: white;
         border-top: 1px solid #e8ebf0;
 
         color: #7b8796;
     }
 
-    /* MOBIL */
+    @media (max-width: 900px) {
+        .cards,
+        .video-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
 
-    @media (max-width: 850px) {
-
+    @media (max-width: 650px) {
         nav {
             padding: 15px 20px;
         }
@@ -369,7 +408,8 @@
             display: none;
         }
 
-        .cards {
+        .cards,
+        .video-grid {
             grid-template-columns: 1fr;
         }
 
@@ -377,10 +417,9 @@
             min-height: 500px;
         }
 
-        .video-box iframe {
-            min-height: 350px;
+        .hero h1 {
+            font-size: 48px;
         }
-
     }
 </style>
 ```
@@ -390,46 +429,28 @@
 <body>
 
 ```
-<!-- NAVIGÁCIÓ -->
-
 <nav>
-
     <div class="logo">
         🎮 FefeN <span>Gaming</span>
     </div>
 
     <ul>
-        <li>
-            <a href="#fooldal">Főoldal</a>
-        </li>
-
-        <li>
-            <a href="#videok">Videók</a>
-        </li>
-
-        <li>
-            <a href="#rolam">Rólam</a>
-        </li>
+        <li><a href="#fooldal">Főoldal</a></li>
+        <li><a href="#videok">Videók</a></li>
+        <li><a href="#rolam">Rólam</a></li>
     </ul>
 
     <a
         class="channel-button"
         href="https://www.youtube.com/@IgaziFefeX"
         target="_blank"
+        rel="noopener"
     >
         🔴 Csatorna
     </a>
-
 </nav>
 
-
-<!-- HERO -->
-
-<section
-    class="hero"
-    id="fooldal"
->
-
+<section class="hero" id="fooldal">
     <div class="hero-content">
 
         <div class="hero-badge">
@@ -443,15 +464,15 @@
         <p>
             Gaming videók, Shorts, AI és még sok más.
             Nézd meg a legújabb tartalmakat, és csatlakozz
-            a közösséghez!
+            a FefeN Gaming közösséghez!
         </p>
 
         <div class="hero-buttons">
-
             <a
                 class="main-button"
                 href="https://www.youtube.com/@IgaziFefeX"
                 target="_blank"
+                rel="noopener"
             >
                 ▶️ YouTube-csatorna
             </a>
@@ -462,113 +483,64 @@
             >
                 📺 Videók megtekintése
             </a>
-
         </div>
 
     </div>
-
 </section>
 
-
-<!-- TARTALOM -->
-
-<section
-    class="section"
-    id="rolam"
->
+<section class="section" id="rolam">
 
     <div class="section-title">
-
         <h2>Mit találsz itt?</h2>
-
-        <p>
-            Minden, ami FefeN Gaming.
-        </p>
-
+        <p>Minden, ami FefeN Gaming.</p>
     </div>
 
     <div class="cards">
 
         <div class="card">
-
-            <div class="card-icon">
-                🎮
-            </div>
-
+            <div class="card-icon">🎮</div>
             <h3>Gaming</h3>
-
             <p>
                 Gaming tartalmak, játékok és izgalmas
                 pillanatok egy helyen.
             </p>
-
         </div>
 
         <div class="card">
-
-            <div class="card-icon">
-                ⚡
-            </div>
-
+            <div class="card-icon">⚡</div>
             <h3>Shorts</h3>
-
             <p>
                 Rövid, gyors és szórakoztató videók
                 a csatorna legjobb pillanataiból.
             </p>
-
         </div>
 
         <div class="card">
-
-            <div class="card-icon">
-                🤖
-            </div>
-
+            <div class="card-icon">🤖</div>
             <h3>AI és egyéb tartalmak</h3>
-
             <p>
-                Érdekes technológiai témák és egyéb
-                kreatív tartalmak.
+                Érdekes technológiai témák és kreatív
+                tartalmak.
             </p>
-
         </div>
 
     </div>
-
 </section>
 
-
-<!-- VIDEÓK -->
-
-<section
-    class="section videos"
-    id="videok"
->
+<section class="section videos" id="videok">
 
     <div class="section-title">
-
         <h2>📺 Legújabb videóim</h2>
-
         <p>
-            Nézd meg a legújabb tartalmakat közvetlenül az oldalon.
+            A legfrissebb FefeN Gaming videók automatikusan megjelennek itt.
         </p>
-
     </div>
 
-    <div class="video-box">
-
-        <iframe
-            src="https://www.youtube.com/embed?listType=user_uploads&list=UC4YuGG7PDePx_NGdrb05Yxw"
-            allowfullscreen>
-        </iframe>
-
+    <div id="video-container" class="video-grid">
+        <p class="loading">⏳ Videók betöltése...</p>
     </div>
 
 </section>
-
-
-<!-- CTA -->
 
 <section class="cta">
 
@@ -584,748 +556,68 @@
         class="main-button"
         href="https://www.youtube.com/@IgaziFefeX"
         target="_blank"
+        rel="noopener"
     >
         🔴 Feliratkozás a YouTube-on
     </a>
 
 </section>
 
-
-<!-- FOOTER -->
-
 <footer>
-
     © 2026 FefeN Gaming · Hivatalos csatornaoldal 🎮
-
 </footer>
-```
-
-</body>
-</html>
-<!-- VIDEÓK -->
-
-<section
-    class="section videos"
-    id="videok"
->
-
-```
-<div class="section-title">
-
-    <h2>📺 Legújabb videóim</h2>
-
-    <p>
-        Nézd meg a legújabb FefeN Gaming tartalmakat!
-    </p>
-
-</div>
-
-
-<div class="video-grid">
-
-
-    <!-- VIDEÓ 1 -->
-
-    <a
-        class="video-card"
-        href="https://www.youtube.com/@IgaziFefeX"
-        target="_blank"
-    >
-
-        <div class="thumbnail">
-
-            <div class="play-button">
-                ▶
-            </div>
-
-            <div class="video-label">
-                🔴 YOUTUBE
-            </div>
-
-        </div>
-
-        <div class="video-info">
-
-            <h3>
-        
-
-        </div>
-
-        <div class="video-info">
-
-          <div
-    id="video-container"
-    class="video-grid"
->
-</div>
-
-            <p>
-                FefeN Gaming · Új tartalom
-            </p>
-
-        </div>
-
-    </a>
-
-</div>
-```
-
-</section>
-<!-- VIDEÓK -->
-
-<section
-    class="section videos"
-    id="videok"
->
-
-```
-<div class="section-title">
-
-    <h2>📺 Legújabb videóim</h2>
-
-    <p>
-        A legfrissebb FefeN Gaming videók automatikusan megjelennek itt.
-    </p>
-
-</div>
-
-
-<!-- IDE TÖLTŐDNEK BE AUTOMATIKUSAN A VIDEÓK -->
-
-<div
-    id="video-container"
-    class="video-grid"
->
-
-    <p class="loading">
-        ⏳ Videók betöltése...
-    </p>
-
-</div>
-```
-
-</section>
-
-<style>
-
-    .video-grid {
-
-        display: grid;
-
-        grid-template-columns:
-            repeat(3, 1fr);
-
-        gap: 25px;
-
-    }
-
-
-    .video-card {
-
-        display: block;
-
-        overflow: hidden;
-
-        background: white;
-
-        border-radius: 18px;
-
-        border: 1px solid #e5e9ef;
-
-        text-decoration: none;
-
-        color: #182230;
-
-        box-shadow:
-            0 10px 25px
-            rgba(25, 40, 65, 0.06);
-
-        transition:
-            transform 0.3s ease,
-            box-shadow 0.3s ease;
-
-        animation:
-            cardAppear 0.7s ease both;
-
-    }
-
-
-    .video-card:hover {
-
-        transform:
-            translateY(-10px)
-            scale(1.02);
-
-        box-shadow:
-            0 20px 40px
-            rgba(255, 61, 85, 0.2);
-
-    }
-
-
-    .thumbnail {
-
-        position: relative;
-
-        height: 210px;
-
-        overflow: hidden;
-
-        background: #e9edf3;
-
-    }
-
-
-    .thumbnail img {
-
-        width: 100%;
-
-        height: 100%;
-
-        object-fit: cover;
-
-        display: block;
-
-        transition: 0.4s;
-
-    }
-
-
-    .video-card:hover
-    .thumbnail img {
-
-        transform: scale(1.08);
-
-        filter: brightness(0.7);
-
-    }
-
-
-    .play-button {
-
-        position: absolute;
-
-        top: 50%;
-
-        left: 50%;
-
-        transform:
-            translate(-50%, -50%);
-
-        width: 65px;
-
-        height: 65px;
-
-        display: flex;
-
-        align-items: center;
-
-        justify-content: center;
-
-        padding-left: 4px;
-
-        border-radius: 50%;
-
-        background: white;
-
-        color: #ff003c;
-
-        font-size: 26px;
-
-        opacity: 0.95;
-
-        transition: 0.3s;
-
-    }
-
-
-    .video-card:hover
-    .play-button {
-
-        transform:
-            translate(-50%, -50%)
-            scale(1.2);
-
-    }
-
-
-    .video-label {
-
-        position: absolute;
-
-        top: 14px;
-
-        right: 14px;
-
-        padding: 7px 10px;
-
-        border-radius: 7px;
-
-        background:
-            rgba(0, 0, 0, 0.7);
-
-        color: white;
-
-        font-size: 11px;
-
-        font-weight: bold;
-
-    }
-
-
-    .video-info {
-
-        padding: 20px;
-
-    }
-
-
-    .video-info h3 {
-
-        margin-bottom: 8px;
-
-        font-size: 17px;
-
-        line-height: 1.4;
-
-    }
-
-
-    .video-info p {
-
-        color: #7b8796;
-
-        font-size: 14px;
-
-    }
-
-
-    .loading {
-
-        grid-column: 1 / -1;
-
-        text-align: center;
-
-        padding: 40px;
-
-        color: #7b8796;
-
-    }
-
-
-    @keyframes cardAppear {
-
-        from {
-
-            opacity: 0;
-
-            transform:
-                translateY(25px);
-
-        }
-
-        to {
-
-            opacity: 1;
-
-            transform:
-                translateY(0);
-
-        }
-
-    }
-
-
-    @media (max-width: 900px) {
-
-        .video-grid {
-
-            grid-template-columns:
-                repeat(2, 1fr);
-
-        }
-
-    }
-
-
-    @media (max-width: 600px) {
-
-        .video-grid {
-
-            grid-template-columns:
-                1fr;
-
-        }
-
-    }
-
-</style>
 
 <script>
-
-    const channelID =
-        "UC4YuGG7PDePx_NGdrb05Yxw";
-
-
-    const videoContainer =
-        document.getElementById(
-            "video-container"
-        );
-
+    const channelID = "UC4YuGG7PDePx_NGdrb05Yxw";
+    const videoContainer = document.getElementById("video-container");
 
     async function loadVideos() {
-
         try {
+            const rssURL =
+                `https://www.youtube.com/feeds/videos.xml?channel_id=${channelID}`;
 
-            const response =
-                await fetch(
-
-                    `https://api.rss2json.com/v1/api.json?rss_url=https://www.youtube.com/feeds/videos.xml?channel_id=${channelID}`
-
-                );
-
-
-            const data =
-                await response.json();
-
-
-            if (
-                !data.items ||
-                data.items.length === 0
-            ) {
-
-                videoContainer.innerHTML =
-
-                    `<p class="loading">
-                        Nem található videó.
-                    </p>`;
-
-                return;
-
-            }
-
-
-            videoContainer.innerHTML = "";
-
-
-            data.items
-                .slice(0, 6)
-                .forEach(
-                    (video, index) => {
-
-
-                        const videoID =
-                            video.link
-                                .split("v=")[1];
-
-
-                        const card =
-                            document.createElement(
-                                "a"
-                            );
-
-
-                        card.className =
-                            "video-card";
-
-
-                        card.href =
-                            video.link;
-
-
-                        card.target =
-                            "_blank";
-
-
-                        card.style.animationDelay =
-                            `${index * 0.1}s`;
-
-
-                        card.innerHTML = `
-
-                            <div class="thumbnail">
-
-                                <img
-                                    src="https://i.ytimg.com/vi/${videoID}/hqdefault.jpg"
-                                    alt="${video.title}"
-                                >
-
-                                <div class="play-button">
-                                    ▶
-                                </div>
-
-                                <div class="video-label">
-                                    🔴 YOUTUBE
-                                </div>
-
-                            </div>
-
-                            <div class="video-info">
-
-                                <h3>
-                                    ${video.title}
-                                </h3>
-
-                                <p>
-                                    FefeN Gaming · YouTube
-                                </p>
-
-                            </div>
-
-                        `;
-
-
-                        videoContainer.appendChild(
-                            card
-                        );
-
-                    }
-                );
-
-
-        } catch (error) {
-
-            videoContainer.innerHTML =
-
-                `<p class="loading">
-                    ❌ A videók betöltése nem sikerült.
-                </p>`;
-
-            console.error(
-                "Videóbetöltési hiba:",
-                error
-            );
-
-        }
-
-    }
-
-
-    loadVideos();
-
-</script>
-<section class="section videos" id="videok">
-
-    <div class="section-title">
-        <h2>📺 Legújabb videóim</h2>
-        <p>FefeN Gaming legújabb YouTube-videói</p>
-    </div>
-
-    <div id="video-container" class="video-grid">
-        <p class="loading">⏳ Videók betöltése...</p>
-    </div>
-
-</section>
-
-<style>
-
-.video-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
-}
-
-.video-card {
-    display: block;
-    overflow: hidden;
-    background: white;
-    border-radius: 18px;
-    text-decoration: none;
-    color: #182230;
-    border: 1px solid #e5e9ef;
-    box-shadow: 0 10px 25px rgba(25, 40, 65, 0.08);
-    transition: 0.3s;
-}
-
-.video-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(255, 61, 85, 0.2);
-}
-
-.thumbnail {
-    position: relative;
-    height: 210px;
-    overflow: hidden;
-    background: #ddd;
-}
-
-.thumbnail img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: 0.4s;
-}
-
-.video-card:hover .thumbnail img {
-    transform: scale(1.08);
-    filter: brightness(0.7);
-}
-
-.play-button {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    width: 68px;
-    height: 68px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 50%;
-
-    background: white;
-    color: #ff003c;
-
-    font-size: 28px;
-    padding-left: 4px;
-
-    transition: 0.3s;
-}
-
-.video-card:hover .play-button {
-    transform: translate(-50%, -50%) scale(1.2);
-}
-
-.video-label {
-    position: absolute;
-    top: 14px;
-    right: 14px;
-
-    padding: 7px 10px;
-
-    border-radius: 7px;
-
-    background: rgba(0, 0, 0, 0.75);
-    color: white;
-
-    font-size: 11px;
-    font-weight: bold;
-}
-
-.video-info {
-    padding: 20px;
-}
-
-.video-info h3 {
-    margin-bottom: 8px;
-    font-size: 17px;
-    line-height: 1.4;
-}
-
-.video-info p {
-    color: #7b8796;
-    font-size: 14px;
-}
-
-.loading {
-    grid-column: 1 / -1;
-    text-align: center;
-    padding: 40px;
-    color: #7b8796;
-}
-
-@media (max-width: 900px) {
-    .video-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 600px) {
-    .video-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-</style>
-
-<script>
-
-const channelID =
-    "UC4YuGG7PDePx_NGdrb05Yxw";
-
-const videoContainer =
-    document.getElementById("video-container");
-
-
-async function loadVideos() {
-
-    try {
-
-        const rssURL =
-            `https://www.youtube.com/feeds/videos.xml?channel_id=${channelID}`;
-
-        const response =
-            await fetch(
+            const response = await fetch(
                 `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssURL)}`
             );
 
-        const data =
-            await response.json();
+            const data = await response.json();
 
+            if (!data.items || data.items.length === 0) {
+                videoContainer.innerHTML =
+                    "<p class='loading'>Nincs elérhető videó.</p>";
+                return;
+            }
 
-        if (
-            !data.items ||
-            data.items.length === 0
-        ) {
+            videoContainer.innerHTML = "";
 
-            videoContainer.innerHTML =
-                "<p class='loading'>Nincs elérhető videó.</p>";
+            data.items.slice(0, 6).forEach((video, index) => {
 
-            return;
-
-        }
-
-
-        videoContainer.innerHTML = "";
-
-
-        data.items
-            .slice(0, 6)
-            .forEach((video, index) => {
-
-
-                // A KONKRÉT VIDEÓ ID-JE
-
-                const videoID =
-                    video.guid.replace(
-                        "yt:video:",
-                        ""
-                    );
-
-
-                // A KONKRÉT VIDEÓ LINKJE
+                const videoID = video.guid.replace(
+                    "yt:video:",
+                    ""
+                );
 
                 const videoURL =
                     `https://www.youtube.com/watch?v=${videoID}`;
 
-
                 const card =
                     document.createElement("a");
 
+                card.className = "video-card";
+                card.href = videoURL;
+                card.target = "_blank";
+                card.rel = "noopener";
 
-                card.className =
-                    "video-card";
-
-
-                card.href =
-                    videoURL;
-
-
-                card.target =
-                    "_blank";
-
+                card.style.animationDelay =
+                    `${index * 0.1}s`;
 
                 card.innerHTML = `
-
                     <div class="thumbnail">
 
                         <img
                             src="https://i.ytimg.com/vi/${videoID}/hqdefault.jpg"
                             alt="${video.title}"
+                            loading="lazy"
                         >
 
                         <div class="play-button">
@@ -1349,59 +641,26 @@ async function loadVideos() {
                         </p>
 
                     </div>
-
                 `;
 
-
                 videoContainer.appendChild(card);
-
             });
 
+        } catch (error) {
+
+            console.error(
+                "Videóbetöltési hiba:",
+                error
+            );
+
+            videoContainer.innerHTML =
+                "<p class='loading'>❌ A videók betöltése nem sikerült.</p>";
+        }
     }
 
-    catch (error) {
-
-        console.error(
-            "Videóbetöltési hiba:",
-            error
-        );
-
-        videoContainer.innerHTML =
-            "<p class='loading'>❌ A videók betöltése nem sikerült.</p>";
-
-    }
-
-}
-
-
-loadVideos();
-
+    loadVideos();
 </script>
-<!DOCTYPE html>
-<html>
-<head>
-...
-</head>
+```
 
-<body>
-...
-</body>
-</html><!DOCTYPE html>
-<html>
-<head>
-...
-</head>
-
-<body>
-...
-</body>
-</html><!DOCTYPE html>
-<html>
-<head>
-...
-</head>
-
-<body>
-...
 </body>
 </html>
