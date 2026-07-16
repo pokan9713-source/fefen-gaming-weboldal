@@ -8,9 +8,14 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet"
+    >
 
     <style>
+
         :root {
             --red: #ff1744;
             --red-dark: #d50032;
@@ -67,7 +72,7 @@
 
         nav ul {
             display: flex;
-            gap: 24px;
+            gap: 28px;
             list-style: none;
         }
 
@@ -130,8 +135,8 @@
             margin-bottom: 25px;
 
             color: #ff718c;
-            background: rgba(255, 23, 68, 0.1);
 
+            background: rgba(255, 23, 68, 0.1);
             border: 1px solid rgba(255, 23, 68, 0.45);
             border-radius: 30px;
 
@@ -243,7 +248,6 @@
         .card:hover {
             transform: translateY(-8px);
             border-color: rgba(255, 23, 68, 0.5);
-            box-shadow: 0 20px 45px rgba(0,0,0,0.35);
         }
 
         .card-icon {
@@ -261,28 +265,9 @@
             line-height: 1.7;
         }
 
-        .schedule {
-            margin-top: 25px;
-            padding: 22px;
-
-            text-align: center;
-
-            background: rgba(255, 23, 68, 0.08);
-            border: 1px solid rgba(255, 23, 68, 0.3);
-            border-radius: 14px;
-        }
-
-        .schedule h3 {
-            margin-bottom: 8px;
-            color: #ff718c;
-        }
-
-        .schedule p {
-            color: white;
-        }
-
         .videos {
             max-width: none;
+            padding: 100px 7%;
             background: linear-gradient(180deg, #0b0d13, #10131b);
         }
 
@@ -403,12 +388,81 @@
             margin: auto;
         }
 
-        .social-card {
+        .channels {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 22px;
+        }
+
+        .channel-card {
+            padding: 28px;
+
+            background: linear-gradient(145deg, #171b25, #0e1117);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+
             text-align: center;
         }
 
-        .social-card .button {
-            margin-top: 20px;
+        .channel-card h3 {
+            margin-bottom: 10px;
+        }
+
+        .channel-card p {
+            margin-bottom: 20px;
+            color: var(--muted);
+        }
+
+        .socials {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .social {
+            padding: 14px 20px;
+
+            color: white;
+            background: var(--card);
+
+            border: 1px solid var(--border);
+            border-radius: 10px;
+
+            text-decoration: none;
+            font-weight: 800;
+
+            transition: 0.25s;
+        }
+
+        .social:hover {
+            transform: translateY(-4px);
+            border-color: var(--red);
+        }
+
+        .schedule {
+            margin: 70px auto 0;
+            max-width: 650px;
+
+            padding: 30px;
+
+            text-align: center;
+
+            background: linear-gradient(145deg, #171b25, #0e1117);
+            border: 1px solid var(--red);
+            border-radius: 16px;
+
+            box-shadow: 0 0 30px rgba(255, 23, 68, 0.15);
+        }
+
+        .schedule h3 {
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+
+        .schedule p {
+            color: var(--muted);
         }
 
         .cta {
@@ -465,7 +519,8 @@
             }
 
             .cards,
-            .video-grid {
+            .video-grid,
+            .channels {
                 grid-template-columns: 1fr;
             }
 
@@ -480,11 +535,14 @@
             .latest-title {
                 margin-top: 70px;
             }
+
         }
+
     </style>
 </head>
 
 <body>
+
 
     <!-- NAVIGÁCIÓ -->
 
@@ -495,6 +553,7 @@
         </div>
 
         <ul>
+
             <li>
                 <a href="#fooldal">Főoldal</a>
             </li>
@@ -508,8 +567,9 @@
             </li>
 
             <li>
-                <a href="#social">Közösség</a>
+                <a href="#kozosseg">Közösség</a>
             </li>
+
         </ul>
 
         <a
@@ -543,7 +603,6 @@
             <p>
                 Gaming, Shorts, AI és még sok más.
                 Nézd meg a legjobb videókat,
-                kövesd a csatornákat,
                 és csatlakozz a FefeX Gaming közösségéhez!
             </p>
 
@@ -555,7 +614,7 @@
                     target="_blank"
                     rel="noopener"
                 >
-                    ▶️ Fő YouTube-csatorna
+                    ▶️ YouTube-csatorna
                 </a>
 
                 <a
@@ -629,16 +688,6 @@
 
         </div>
 
-        <div class="schedule">
-
-            <h3>📅 Új videó minden héten!</h3>
-
-            <p>
-                🔥 Minden pénteken 18:00-kor új FefeX Gaming videó!
-            </p>
-
-        </div>
-
     </section>
 
 
@@ -656,7 +705,7 @@
                 <h2>🔥 Népszerű videók</h2>
 
                 <p>
-                    A FefeX Gaming kiemelt videói.
+                    A FefeX Gaming legjobb videói.
                 </p>
 
             </div>
@@ -664,7 +713,7 @@
             <div class="video-grid">
 
 
-                <!-- NÉPSZERŰ 1 -->
+                <!-- VIDEÓ 1 -->
 
                 <a
                     class="video-card"
@@ -684,7 +733,9 @@
                             🔥 NÉPSZERŰ
                         </div>
 
-                        <div class="play">▶</div>
+                        <div class="play">
+                            ▶
+                        </div>
 
                     </div>
 
@@ -703,7 +754,7 @@
                 </a>
 
 
-                <!-- NÉPSZERŰ 2 -->
+                <!-- VIDEÓ 2 -->
 
                 <a
                     class="video-card"
@@ -723,7 +774,9 @@
                             🔥 NÉPSZERŰ
                         </div>
 
-                        <div class="play">▶</div>
+                        <div class="play">
+                            ▶
+                        </div>
 
                     </div>
 
@@ -742,7 +795,7 @@
                 </a>
 
 
-                <!-- NÉPSZERŰ 3 -->
+                <!-- VIDEÓ 3 -->
 
                 <a
                     class="video-card"
@@ -762,7 +815,9 @@
                             🔥 NÉPSZERŰ
                         </div>
 
-                        <div class="play">▶</div>
+                        <div class="play">
+                            ▶
+                        </div>
 
                     </div>
 
@@ -790,7 +845,7 @@
                 <h2>🆕 Legújabb videók</h2>
 
                 <p>
-                    A legfrissebb FefeX Gaming tartalmak.
+                    A csatorna legfrissebb tartalmai.
                 </p>
 
             </div>
@@ -811,25 +866,27 @@
 
                         <img
                             src="https://i.ytimg.com/vi/zsJXD0edIbg/hqdefault.jpg"
-                            alt="FefeX Gaming új videó"
+                            alt="FefeX Gaming legújabb videó"
                         >
 
                         <div class="badge-label latest-label">
                             🆕 ÚJ
                         </div>
 
-                        <div class="play">▶</div>
+                        <div class="play">
+                            ▶
+                        </div>
 
                     </div>
 
                     <div class="video-info">
 
                         <h3>
-                            FefeX Gaming új videó
+                            FefeX Gaming legújabb videó
                         </h3>
 
                         <p>
-                            🎮 Legújabb tartalom
+                            🎮 YouTube
                         </p>
 
                     </div>
@@ -838,45 +895,6 @@
 
 
                 <!-- ÚJ VIDEÓ 2 -->
-
-                <a
-                    class="video-card"
-                    href="https://www.youtube.com/watch?v=PXT6gbVlDP0"
-                    target="_blank"
-                    rel="noopener"
-                >
-
-                    <div class="video-thumbnail">
-
-                        <img
-                            src="https://i.ytimg.com/vi/PXT6gbVlDP0/hqdefault.jpg"
-                            alt="FefeX Gaming új videó"
-                        >
-
-                        <div class="badge-label latest-label">
-                            🆕 ÚJ
-                        </div>
-
-                        <div class="play">▶</div>
-
-                    </div>
-
-                    <div class="video-info">
-
-                        <h3>
-                            FefeX Gaming új videó
-                        </h3>
-
-                        <p>
-                            🎮 Legújabb tartalom
-                        </p>
-
-                    </div>
-
-                </a>
-
-
-                <!-- ÚJ VIDEÓ 3 -->
 
                 <a
                     class="video-card"
@@ -889,25 +907,68 @@
 
                         <img
                             src="https://i.ytimg.com/vi/xrzdinOjjEw/hqdefault.jpg"
-                            alt="FefeX Gaming új videó"
+                            alt="FefeX Gaming legújabb videó"
                         >
 
                         <div class="badge-label latest-label">
                             🆕 ÚJ
                         </div>
 
-                        <div class="play">▶</div>
+                        <div class="play">
+                            ▶
+                        </div>
 
                     </div>
 
                     <div class="video-info">
 
                         <h3>
-                            FefeX Gaming új videó
+                            FefeX Gaming legújabb videó
                         </h3>
 
                         <p>
-                            🎮 Legújabb tartalom
+                            🎮 YouTube
+                        </p>
+
+                    </div>
+
+                </a>
+
+
+                <!-- ÚJ VIDEÓ 3 -->
+
+                <a
+                    class="video-card"
+                    href="https://www.youtube.com/watch?v=PXT6gbVlDP0"
+                    target="_blank"
+                    rel="noopener"
+                >
+
+                    <div class="video-thumbnail">
+
+                        <img
+                            src="https://i.ytimg.com/vi/PXT6gbVlDP0/hqdefault.jpg"
+                            alt="FefeX Gaming legújabb videó"
+                        >
+
+                        <div class="badge-label latest-label">
+                            🆕 ÚJ
+                        </div>
+
+                        <div class="play">
+                            ▶
+                        </div>
+
+                    </div>
+
+                    <div class="video-info">
+
+                        <h3>
+                            FefeX Gaming legújabb videó
+                        </h3>
+
+                        <p>
+                            🎮 YouTube
                         </p>
 
                     </div>
@@ -952,7 +1013,9 @@
                             ⚡ SHORTS
                         </div>
 
-                        <div class="play">▶</div>
+                        <div class="play">
+                            ▶
+                        </div>
 
                     </div>
 
@@ -991,7 +1054,9 @@
                             ⚡ SHORTS
                         </div>
 
-                        <div class="play">▶</div>
+                        <div class="play">
+                            ▶
+                        </div>
 
                     </div>
 
@@ -1016,34 +1081,32 @@
     </section>
 
 
-    <!-- CSATORNÁK ÉS KÖZÖSSÉGI OLDALAK -->
+    <!-- KÖZÖSSÉGI OLDALAK -->
 
-    <section class="section" id="social">
+    <section class="section" id="kozosseg">
 
         <div class="section-title">
 
-            <h2>🌐 Kövess a közösségi oldalakon!</h2>
+            <h2>🌐 FefeX Gaming közösség</h2>
 
             <p>
-                Találkozzunk minden platformon.
+                Kövess minden platformon!
             </p>
 
         </div>
 
-        <div class="cards">
+
+        <div class="channels">
 
 
-            <!-- FŐ YOUTUBE -->
+            <!-- MELLÉKCSATORNA -->
 
-            <div class="card social-card">
+            <div class="channel-card">
 
-                <div class="card-icon">🎮</div>
-
-                <h3>FefeX Gaming</h3>
+                <h3>📺 Mellék YouTube-csatorna</h3>
 
                 <p>
-                    A fő YouTube-csatorna gaming videókkal
-                    és új tartalmakkal.
+                    @IgaziFefeX2026
                 </p>
 
                 <a
@@ -1052,23 +1115,20 @@
                     target="_blank"
                     rel="noopener"
                 >
-                    ▶️ Fő csatorna
+                    Megnyitás
                 </a>
 
             </div>
 
 
-            <!-- SHORTS -->
+            <!-- SHORTS CSATORNA -->
 
-            <div class="card social-card">
+            <div class="channel-card">
 
-                <div class="card-icon">⚡</div>
-
-                <h3>FefeX Shorts</h3>
+                <h3>⚡ Shorts YouTube-csatorna</h3>
 
                 <p>
-                    Rövid, gyors és szórakoztató
-                    YouTube Shorts videók.
+                    @FefeXShorts
                 </p>
 
                 <a
@@ -1077,60 +1137,46 @@
                     target="_blank"
                     rel="noopener"
                 >
-                    ⚡ Shorts csatorna
+                    Megnyitás
                 </a>
 
             </div>
 
-
-            <!-- TIKTOK -->
-
-            <div class="card social-card">
-
-                <div class="card-icon">🎵</div>
-
-                <h3>TikTok</h3>
-
-                <p>
-                    Rövid videók és extra tartalmak
-                    a TikTokon.
-                </p>
-
-                <a
-                    class="button button-primary"
-                    href="https://www.tiktok.com/@fefexgaming2023"
-                    target="_blank"
-                    rel="noopener"
-                >
-                    🎵 TikTok megnyitása
-                </a>
-
-            </div>
+        </div>
 
 
-            <!-- INSTAGRAM -->
+        <div class="socials">
 
-            <div class="card social-card">
+            <a
+                class="social"
+                href="https://www.tiktok.com/@fefexgaming2023"
+                target="_blank"
+                rel="noopener"
+            >
+                🎵 TikTok
+            </a>
 
-                <div class="card-icon">📸</div>
+            <a
+                class="social"
+                href="https://www.instagram.com/fefex2026_"
+                target="_blank"
+                rel="noopener"
+            >
+                📸 Instagram
+            </a>
 
-                <h3>Instagram</h3>
+        </div>
 
-                <p>
-                    Kövess Instagramon is a legújabb
-                    képekért és tartalmakért.
-                </p>
 
-                <a
-                    class="button button-primary"
-                    href="https://www.instagram.com/fefex2026_/"
-                    target="_blank"
-                    rel="noopener"
-                >
-                    📸 Instagram megnyitása
-                </a>
+        <div class="schedule">
 
-            </div>
+            <h3>
+                🚀 Fejlesztési idő
+            </h3>
+
+            <p>
+                Minden pénteken 18:00-kor fejlesztés!
+            </p>
 
         </div>
 
@@ -1146,8 +1192,7 @@
         </h2>
 
         <p>
-            Iratkozz fel, kövess be mindenhol,
-            és ne maradj le az új videókról!
+            Iratkozz fel, és ne maradj le az új videókról!
         </p>
 
         <a
@@ -1156,7 +1201,7 @@
             target="_blank"
             rel="noopener"
         >
-            🔴 Feliratkozás YouTube-on
+            🔴 YouTube megnyitása
         </a>
 
     </section>
