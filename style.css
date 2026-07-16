@@ -481,3 +481,23 @@ to {
         grid-template-columns: 1fr;
     }
 }
+.hero {
+    position: relative;
+    min-height: 720px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 100px 20px;
+
+    text-align: center;
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            rgba(5, 7, 12, 0.72),
+            rgba(5, 7, 12, 0.88)
+        ),
+        url("background.jpg") center / cover no-repeat;
+}
