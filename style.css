@@ -87,7 +87,23 @@ header{
 
 }
 
+.subscriber-box {
+    background: rgba(255,255,255,0.1);
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    margin: 20px auto;
+    width: 250px;
+}
 
+.subscriber-box h2 {
+    color: red;
+}
+
+#subscriber-count {
+    font-size: 30px;
+    font-weight: bold;
+}
 
 @keyframes glow{
 
