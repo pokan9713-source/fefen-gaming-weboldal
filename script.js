@@ -1,116 +1,78 @@
-// FefeN Gaming V3 - Script
+// FefeN Gaming Weboldal JavaScript 🚀
 
-
-// Oldal betöltési effekt
-
+// Oldal betöltési animáció
 window.addEventListener("load", () => {
-
-    document.body.style.opacity = "1";
-
+    document.body.classList.add("loaded");
 });
 
 
+// Görgetés animáció
+const sections = document.querySelectorAll("section");
 
+window.addEventListener("scroll", () => {
+    sections.forEach(section => {
+        const top = section.getBoundingClientRect().top;
+        const height = window.innerHeight;
 
-// Görgetésnél kártya animáció
-
-const cards = document.querySelectorAll(
-".video-card, .news div, .goals div, .stats div"
-);
-
-
-const observer = new IntersectionObserver((entries)=>{
-
-entries.forEach(entry=>{
-
-
-if(entry.isIntersecting){
-
-entry.target.style.transform="translateY(0)";
-entry.target.style.opacity="1";
-
-}
-
-
+        if (top < height - 100) {
+            section.classList.add("show");
+        }
+    });
 });
 
 
-},{
-threshold:0.2
+// YouTube gomb animáció
+const buttons = document.querySelectorAll("a, button");
+
+buttons.forEach(button => {
+    button.addEventListener("mouseenter", () => {
+        button.style.transform = "scale(1.08)";
+    });
+
+    button.addEventListener("mouseleave", () => {
+        button.style.transform = "scale(1)";
+    });
 });
-
-
-
-cards.forEach(card=>{
-
-card.style.opacity="0";
-
-card.style.transform="translateY(50px)";
-
-card.style.transition="0.6s";
-
-
-observer.observe(card);
-
-
-});
-
-
-
-
 
 
 // Feliratkozó számláló animáció
+let subscribers = 260;
 
-const numbers = document.querySelectorAll(".stats h2");
+const counter = document.querySelector("#subscriber-count");
 
+if(counter){
+    let number = 0;
 
-numbers.forEach(number=>{
+    let animation = setInterval(() => {
+        number++;
 
+        counter.innerHTML = number + " feliratkozó";
 
-let target = number.innerText;
+        if(number >= subscribers){
+            clearInterval(animation);
+        }
 
-if(target.includes("+")){
-
-
-let value = parseInt(target);
-
-let count = 0;
-
-
-let timer=setInterval(()=>{
-
-
-count += Math.ceil(value/40);
-
-
-if(count >= value){
-
-count=value;
-
-clearInterval(timer);
-
+    },5);
 }
 
 
-number.innerText=count+"+";
+// Menü görgetés
+document.querySelectorAll("a[href^='#']").forEach(link => {
 
+    link.addEventListener("click", function(e){
 
-},40);
+        e.preventDefault();
 
+        document.querySelector(this.getAttribute("href"))
+        .scrollIntoView({
+            behavior:"smooth"
+        });
 
-}
-
+    });
 
 });
 
 
-
-
-
-
 // Üdvözlő üzenet
-
-console.log(
-"🎮 Üdv a FefeN Gaming hivatalos oldalán!"
-);
+console.log("🎮 FefeN Gaming weboldal betöltve!");
+console.log("🔥 Készült JavaScript segítségével");
