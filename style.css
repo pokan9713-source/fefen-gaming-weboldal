@@ -1,623 +1,344 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Segoe UI', Arial, sans-serif;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #050505;
+    color: white;
 }
 
 
-html{
-    scroll-behavior:smooth;
+/* Fejléc */
+
+header {
+    width: 100%;
+    padding: 20px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #080808;
+    border-bottom: 2px solid #00aaff;
+    position: sticky;
+    top: 0;
+    z-index: 10;
 }
 
 
-body{
-    background:#050510;
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    color: #00aaff;
+}
+
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 25px;
+    transition: 0.3s;
+}
+
+
+nav a:hover {
+    color: #00aaff;
+}
+
+
+
+/* Fő rész */
+
+.hero {
+
+    text-align: center;
+    padding: 100px 20px;
+
+    background:
+    linear-gradient(
+    rgba(0,0,0,.7),
+    rgba(0,0,0,.9)
+    );
+
+}
+
+
+.hero h1 {
+
+    font-size: 50px;
+    color:#00aaff;
+
+}
+
+
+.hero p {
+
+    margin:20px;
+    font-size:20px;
+
+}
+
+
+
+.button {
+
+    display:inline-block;
+    padding:15px 30px;
+    background:#00aaff;
     color:white;
-    overflow-x:hidden;
-}
-
-
-
-/* háttér fények */
-
-body::before{
-
-content:"";
-
-position:fixed;
-
-width:500px;
-height:500px;
-
-background:#0066ff;
-
-filter:blur(180px);
-
-top:-200px;
-left:-200px;
-
-opacity:.4;
-
-z-index:-1;
+    text-decoration:none;
+    border-radius:30px;
+    font-weight:bold;
 
 }
 
 
-body::after{
+.button:hover {
 
-content:"";
+    background:white;
+    color:#000;
 
-position:fixed;
+}
 
-width:500px;
-height:500px;
 
-background:#9b00ff;
 
-filter:blur(180px);
+/* Címek */
 
-bottom:-200px;
-right:-200px;
+h2 {
 
-opacity:.35;
-
-z-index:-1;
+    text-align:center;
+    margin:50px 0 30px;
+    font-size:35px;
+    color:#00aaff;
 
 }
 
 
 
 
+/* Videók */
 
-/* NAVBAR */
+.video-grid {
 
-
-header{
-
-position:fixed;
-
-top:0;
-
-width:100%;
-
-z-index:1000;
-
-background:rgba(5,5,16,.7);
-
-backdrop-filter:blur(20px);
-
-border-bottom:1px solid rgba(255,255,255,.1);
+    width:85%;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
 
 }
 
 
 
-nav{
+.video-card {
 
-display:flex;
+    background:#111;
+    padding:15px;
+    border-radius:15px;
+    box-shadow:0 0 15px #0077aa;
+    transition:.3s;
 
-justify-content:space-between;
+}
 
-align-items:center;
 
-padding:20px 8%;
+.video-card:hover {
+
+    transform:translateY(-8px);
 
 }
 
 
 
-.logo{
+.video-card iframe {
 
-font-size:30px;
+    width:100%;
+    height:250px;
+    border-radius:10px;
+    border:0;
 
-font-weight:900;
+}
+
+
+.video-card h3 {
+
+    margin-top:15px;
 
 }
 
 
 
-.logo span{
+/* Shorts */
 
-color:#00bfff;
+.short-grid {
+
+    width:85%;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+
+}
+
+
+.short-card {
+
+    background:#111;
+    padding:10px;
+    border-radius:15px;
+
+}
+
+
+.short-card iframe {
+
+    width:100%;
+    height:450px;
+    border:0;
+    border-radius:10px;
 
 }
 
 
 
-ul{
-
-display:flex;
-
-gap:30px;
-
-list-style:none;
-
-}
+/* Csatornák */
 
 
+.channel-grid {
 
-ul a{
-
-color:white;
-
-text-decoration:none;
-
-font-weight:600;
-
-transition:.3s;
+    width:85%;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:25px;
 
 }
 
 
 
-ul a:hover{
+.channel-card {
 
-color:#00bfff;
+    background:#111;
+    text-align:center;
+    padding:25px;
+    border-radius:20px;
+    transition:.3s;
+
+}
+
+
+.channel-card:hover {
+
+    transform:scale(1.05);
+    box-shadow:0 0 20px #00aaff;
 
 }
 
 
 
+.channel-card img {
+
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    object-fit:cover;
+    margin-bottom:15px;
+
+}
 
 
-.yt-btn{
+.channel-card a {
 
-background:linear-gradient(45deg,#ff0000,#ff5555);
-
-padding:12px 25px;
-
-border-radius:30px;
-
-text-decoration:none;
-
-color:white;
-
-font-weight:bold;
-
-box-shadow:0 0 20px rgba(255,0,0,.5);
+    display:inline-block;
+    margin-top:15px;
+    padding:10px 20px;
+    background:#00aaff;
+    color:white;
+    text-decoration:none;
+    border-radius:20px;
 
 }
 
 
 
+/* Social */
+
+.social {
+
+    text-align:center;
+    margin-bottom:50px;
+
+}
 
 
+.social a {
+
+    display:inline-block;
+    margin:10px;
+    padding:15px 25px;
+    background:#111;
+    color:white;
+    text-decoration:none;
+    border-radius:30px;
+
+}
 
 
-/* HERO */
+.social a:hover {
 
-
-.hero{
-
-height:100vh;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-text-align:center;
-
-
-background:
-
-linear-gradient(
-rgba(0,0,0,.5),
-#050510
-),
-
-url("https://images.unsplash.com/photo-1593305841991-05c297ba4575");
-
-background-size:cover;
-
-background-position:center;
+    background:#00aaff;
 
 }
 
 
 
-.hero-content{
+/* Lábléc */
 
-animation:fade 1.5s;
+footer {
 
-}
-
-
-
-.hero h1{
-
-font-size:70px;
-
-font-weight:900;
-
-}
-
-
-
-.hero span{
-
-background:linear-gradient(90deg,#00bfff,#9b00ff);
-
--webkit-background-clip:text;
-
-color:transparent;
-
-}
-
-
-
-.hero p{
-
-font-size:24px;
-
-margin:25px;
-
-color:#ccc;
-
-}
-
-
-
-
-
-.main-btn{
-
-display:inline-block;
-
-padding:16px 35px;
-
-background:linear-gradient(45deg,#00bfff,#7000ff);
-
-border-radius:40px;
-
-color:white;
-
-text-decoration:none;
-
-font-weight:bold;
-
-box-shadow:0 0 30px #0066ff;
-
-transition:.3s;
-
-}
-
-
-.main-btn:hover{
-
-transform:scale(1.08);
+    text-align:center;
+    padding:30px;
+    background:#080808;
+    border-top:2px solid #00aaff;
 
 }
 
 
 
 
+/* Mobil nézet */
+
+@media(max-width:900px){
 
 
-/* STATOK */
+header {
+
+    flex-direction:column;
+
+}
 
 
-.stats{
+nav {
 
-display:flex;
-
-justify-content:center;
-
-gap:30px;
-
-padding:80px 10%;
+    margin-top:15px;
 
 }
 
 
 
-.stats div{
+.video-grid,
+.short-grid,
+.channel-grid {
 
-width:250px;
-
-padding:35px;
-
-text-align:center;
-
-background:rgba(255,255,255,.08);
-
-border-radius:25px;
-
-border:1px solid rgba(255,255,255,.15);
-
-backdrop-filter:blur(15px);
-
-transition:.4s;
+    grid-template-columns:1fr;
 
 }
 
 
 
-.stats div:hover{
+.hero h1 {
 
-transform:translateY(-10px);
-
-box-shadow:0 0 30px #0066ff;
-
-}
-
-
-
-.stats h2{
-
-font-size:50px;
-
-color:#00bfff;
-
-}
-
-
-
-
-
-
-
-/* SZEKCIÓK */
-
-
-.section{
-
-padding:100px 10%;
-
-text-align:center;
-
-}
-
-
-
-.section h2{
-
-font-size:45px;
-
-margin-bottom:40px;
-
-}
-
-
-
-
-
-
-/* VIDEÓK */
-
-
-.video-grid{
-
-display:grid;
-
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-
-gap:35px;
-
-}
-
-
-
-.video-card{
-
-background:rgba(255,255,255,.08);
-
-border-radius:25px;
-
-overflow:hidden;
-
-border:1px solid rgba(255,255,255,.15);
-
-backdrop-filter:blur(15px);
-
-transition:.4s;
-
-}
-
-
-
-.video-card:hover{
-
-transform:translateY(-15px) scale(1.03);
-
-box-shadow:0 0 35px #00bfff;
-
-}
-
-
-
-.video-card img{
-
-width:100%;
-
-}
-
-
-
-.video-card h3{
-
-padding:20px;
-
-}
-
-
-
-.video-card a{
-
-display:inline-block;
-
-margin-bottom:25px;
-
-background:#00bfff;
-
-padding:12px 25px;
-
-border-radius:25px;
-
-color:white;
-
-text-decoration:none;
-
-}
-
-
-
-
-
-
-
-/* HÍREK */
-
-
-.news div,
-.goals div{
-
-margin:15px;
-
-padding:25px;
-
-background:rgba(255,255,255,.08);
-
-border-radius:20px;
-
-border:1px solid rgba(255,255,255,.15);
-
-}
-
-
-
-
-
-/* CTA */
-
-
-.cta{
-
-padding:100px;
-
-text-align:center;
-
-background:linear-gradient(45deg,#0066ff,#8a00ff);
-
-}
-
-
-
-.cta h2{
-
-font-size:45px;
-
-}
-
-
-
-.cta a{
-
-display:inline-block;
-
-margin-top:30px;
-
-background:white;
-
-color:black;
-
-padding:15px 35px;
-
-border-radius:30px;
-
-text-decoration:none;
-
-font-weight:bold;
-
-}
-
-
-
-
-
-
-
-footer{
-
-text-align:center;
-
-padding:30px;
-
-background:#020205;
-
-color:#aaa;
-
-}
-
-
-
-
-
-
-@keyframes fade{
-
-from{
-
-opacity:0;
-
-transform:translateY(40px);
-
-}
-
-to{
-
-opacity:1;
-
-transform:translateY(0);
-
-}
-
-}
-
-
-
-
-
-
-
-/* MOBIL */
-
-
-@media(max-width:800px){
-
-
-nav{
-
-flex-direction:column;
-
-gap:20px;
-
-}
-
-
-ul{
-
-flex-wrap:wrap;
-
-justify-content:center;
-
-}
-
-
-.hero h1{
-
-font-size:40px;
-
-}
-
-
-.stats{
-
-flex-direction:column;
-
-align-items:center;
+    font-size:35px;
 
 }
 
