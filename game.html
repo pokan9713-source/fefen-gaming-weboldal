@@ -1,168 +1,27 @@
 <!DOCTYPE html>
-<html lang="hu">
-<head>
-<meta charset="UTF-8">
-<title>Busz Játék</title>
-
+<html lang="hu"><head><meta charset="UTF-8"><title>Busz Játék</title>
 <style>
-body{
-    margin:0;
-    overflow:hidden;
-    background:#444;
-    font-family:Arial;
-}
-
-canvas{
-    display:block;
-    margin:auto;
-    background:#6ec6ff;
-}
-
-#score{
-    position:absolute;
-    top:10px;
-    left:10px;
-    color:white;
-    font-size:28px;
-    font-weight:bold;
-}
-</style>
-</head>
-
-<body>
-
-<div id="score">Pont: 0</div>
-
-<canvas id="game" width="500" height="700"></canvas>
-
+body{margin:0;background:#333;font-family:Arial;color:#fff;text-align:center}
+canvas{background:#6ec6ff;display:block;margin:20px auto;border:4px solid #fff}
+</style></head><body>
+<h2>🚌 Busz Játék</h2><p>Bal/Jobb nyíl: mozgatás</p><div id="s">Pont: 0</div>
+<canvas id="c" width="500" height="700"></canvas>
 <script>
-
-const canvas=document.getElementById("game");
-const ctx=canvas.getContext("2d");
-
-let score=0;
-
-const bus={
-x:220,
-y:600,
-w:60,
-h:100,
-speed:7
-};
-
-let passengers=[];
-
-function spawnPassenger(){
-
-passengers.push({
-x:Math.random()*440+10,
-y:-20,
-r:15
-});
-
+const c=document.getElementById('c'),x=c.getContext('2d');
+let bus={x:220,y:610,w:60,h:80},pts=0,arr=[];
+onkeydown=e=>{if(e.key=='ArrowLeft')bus.x=Math.max(100,bus.x-20);
+if(e.key=='ArrowRight')bus.x=Math.min(340,bus.x+20);}
+setInterval(()=>arr.push({x:110+Math.random()*280,y:-20}),800);
+function loop(){
+x.clearRect(0,0,500,700);
+x.fillStyle='#666';x.fillRect(100,0,300,700);
+x.fillStyle='yellow';x.fillRect(bus.x,bus.y,bus.w,bus.h);
+for(let i=arr.length-1;i>=0;i--){
+ let p=arr[i];p.y+=4;
+ x.beginPath();x.fillStyle='red';x.arc(p.x,p.y,10,0,7);x.fill();
+ if(p.x>bus.x&&p.x<bus.x+bus.w&&p.y>bus.y&&p.y<bus.y+bus.h){arr.splice(i,1);pts++;s.textContent='Pont: '+pts;}
+ else if(p.y>700)arr.splice(i,1);
 }
-
-setInterval(spawnPassenger,1000);
-
-document.addEventListener("keydown",e=>{
-
-if(e.key==="ArrowLeft")
-bus.x-=bus.speed;
-
-if(e.key==="ArrowRight")
-bus.x+=bus.speed;
-
-if(bus.x<0)bus.x=0;
-if(bus.x>440)bus.x=440;
-
-});
-
-function drawRoad(){
-
-ctx.fillStyle="#555";
-ctx.fillRect(100,0,300,700);
-
-ctx.strokeStyle="white";
-ctx.lineWidth=5;
-
-for(let i=0;i<700;i+=40){
-
-ctx.beginPath();
-ctx.moveTo(250,i);
-ctx.lineTo(250,i+20);
-ctx.stroke();
-
-}
-
-}
-
-function drawBus(){
-
-ctx.fillStyle="yellow";
-ctx.fillRect(bus.x,bus.y,bus.w,bus.h);
-
-ctx.fillStyle="black";
-ctx.fillRect(bus.x+8,bus.y+10,18,18);
-ctx.fillRect(bus.x+34,bus.y+10,18,18);
-
-}
-
-function drawPassengers(){
-
-ctx.fillStyle="red";
-
-for(let p of passengers){
-
-ctx.beginPath();
-ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-ctx.fill();
-
-}
-
-}
-
-function update(){
-
-ctx.clearRect(0,0,500,700);
-
-drawRoad();
-
-drawBus();
-
-drawPassengers();
-
-for(let i=passengers.length-1;i>=0;i--){
-
-passengers[i].y+=4;
-
-if(
-passengers[i].x>bus.x &&
-passengers[i].x<bus.x+bus.w &&
-passengers[i].y>bus.y &&
-passengers[i].y<bus.y+bus.h
-){
-
-passengers.splice(i,1);
-score++;
-document.getElementById("score").innerText="Pont: "+score;
-
-}
-
-if(passengers[i] && passengers[i].y>720){
-
-passengers.splice(i,1);
-
-}
-
-}
-
-requestAnimationFrame(update);
-
-}
-
-update();
-
-</script>
-
-</body>
-</html>
+requestAnimationFrame(loop)}
+loop();
+</script></body></html>
