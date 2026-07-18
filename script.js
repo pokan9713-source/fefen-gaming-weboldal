@@ -1,28 +1,27 @@
-// FefeX Gaming feliratkozó animáció
+document.addEventListener("DOMContentLoaded", function(){
+
+// Feliratkozó számláló
 
 let subscribers = 306;
-
 let counter = document.getElementById("subs");
+
+if(counter){
 
 let start = 0;
 
 let animation = setInterval(()=>{
 
+    start++;
+
+    counter.innerHTML=start;
+
     if(start >= subscribers){
-
         clearInterval(animation);
-
-    }else{
-
-        start++;
-
-        counter.innerHTML = start;
-
     }
 
 },10);
 
-
+}
 
 
 // Kvíz
@@ -40,7 +39,6 @@ answers:[
 correct:0
 },
 
-
 {
 question:"🔥 Milyen témával foglalkozik a csatorna?",
 answers:[
@@ -51,7 +49,6 @@ answers:[
 ],
 correct:1
 },
-
 
 {
 question:"⛏️ Melyik játék lehet a csatornán?",
@@ -64,7 +61,6 @@ answers:[
 correct:0
 },
 
-
 {
 question:"▶️ Hol található a csatorna?",
 answers:[
@@ -75,7 +71,6 @@ answers:[
 ],
 correct:0
 },
-
 
 {
 question:"🔔 Mit érdemes megnyomni új videókért?",
@@ -91,31 +86,24 @@ correct:1
 ];
 
 
-
-let currentQuestion = 0;
-
-let score = 0;
-
+let currentQuestion=0;
+let score=0;
 
 
 function loadQuestion(){
 
-
-let q = questions[currentQuestion];
+let q=questions[currentQuestion];
 
 
 document.getElementById("question").innerHTML=q.question;
 
 
-let buttons="";
+let html="";
 
 
 q.answers.forEach((answer,index)=>{
 
-
-buttons +=
-
-`
+html += `
 <button onclick="checkAnswer(${index})">
 ${answer}
 </button>
@@ -124,22 +112,15 @@ ${answer}
 });
 
 
-document.getElementById("answers").innerHTML=buttons;
-
-
-document.getElementById("result").innerHTML="";
-
+document.getElementById("answers").innerHTML=html;
 
 }
 
 
 
+window.checkAnswer=function(answer){
 
-
-function checkAnswer(answer){
-
-
-if(answer === questions[currentQuestion].correct){
+if(answer===questions[currentQuestion].correct){
 
 score++;
 
@@ -151,47 +132,37 @@ document.getElementById("result").innerHTML="❌ Hibás!";
 
 }
 
-
 }
 
 
 
-function nextQuestion(){
-
+window.nextQuestion=function(){
 
 currentQuestion++;
 
 
 if(currentQuestion < questions.length){
 
-
 loadQuestion();
 
-
-}
-
-else{
+}else{
 
 
 document.querySelector(".quiz-box").innerHTML=
 
 `
-
-<h2>🎉 Kész a kvíz!</h2>
-
+<h2>🎉 Kvíz kész!</h2>
 <h3>Eredmény: ${score}/${questions.length}</h3>
-
-<button onclick="location.reload()">
-Újra
-</button>
-
+<button onclick="location.reload()">Újra</button>
 `;
 
 }
-
 
 }
 
 
 
 loadQuestion();
+
+
+});
