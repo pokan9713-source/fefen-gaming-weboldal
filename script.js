@@ -1,3 +1,4 @@
+alert("A JavaScript működik!");
 document.addEventListener("DOMContentLoaded", function(){
 
 // Feliratkozó számláló
