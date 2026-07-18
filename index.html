@@ -1,185 +1,92 @@
 <!DOCTYPE html>
 <html lang="hu">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>FefeX Gaming</title>
+<title>FefeX Gaming 🎮</title>
 
 <link rel="stylesheet" href="style.css">
 
 </head>
 
-
 <body>
 
-
 <header>
+    <div class="logo">
+        🎮 FefeX Gaming
+    </div>
 
-<div class="logo">
-🎮 FefeX Gaming
-</div>
-
-
-<nav>
-
-<a href="#videok">Videók</a>
-<a href="#shorts">Shorts</a>
-<a href="#csatornak">Csatornák</a>
-<a href="#kapcsolat">Kapcsolat</a>
-
-</nav>
-
-
+    <nav>
+        <a href="#home">Főoldal</a>
+        <a href="#videos">Videók</a>
+        <a href="#shorts">Shorts</a>
+        <a href="#quiz">Kvíz</a>
+        <a href="#contact">Kapcsolat</a>
+    </nav>
 </header>
 
 
+<section id="home" class="hero">
+
+    <div class="hero-text">
+
+        <h1>FefeX Gaming 🎮</h1>
+
+        <p>
+            Gaming videók • Shorts • Közösség 🔥
+        </p>
+
+        <div class="counter">
+            <h2>FefeN Gaming</h2>
+            <span id="subs">306</span>
+            <p>feliratkozó</p>
+        </div>
 
 
-<section class="hero">
+        <a class="button" href="https://www.youtube.com/@IgaziFefeX">
+            ▶ YouTube csatorna
+        </a>
 
-
-<div class="hero-content">
-
-
-<h1>
-FefeX Gaming 🎮
-</h1>
-
-
-<p>
-Gaming videók • Shorts • Közösség 🔥
-</p>
-
-<div class="subscriber-box">
-    <h2>FefeN Gaming</h2>
-    <p id="subscriber-count">306 feliratkozó</p>
-</div>
-<a class="btn" href="https://www.youtube.com/@IgaziFefeX">
-▶ YouTube
-</a>
-
-
-</div>
-
+    </div>
 
 </section>
 
 
 
-
-
-
-<section id="videok">
-
+<section id="videos">
 
 <h2>🎬 Legújabb videók</h2>
 
-
 <div class="cards">
 
 
-
 <div class="card">
-
 <iframe src="https://www.youtube.com/embed/qqLNdh8GU74"></iframe>
-
 <h3>Legújabb videó #1</h3>
-
 </div>
 
 
-
-
 <div class="card">
-
 <iframe src="https://www.youtube.com/embed/PXT6gbVlDP0"></iframe>
-
 <h3>Legújabb videó #2</h3>
-
 </div>
 
 
-
-
-
 <div class="card">
-
 <iframe src="https://www.youtube.com/embed/x1f4SQ5ze0g"></iframe>
-
 <h3>Legújabb videó #3</h3>
-
 </div>
 
 
-
 </div>
-
 
 </section>
-
-
-
-
-
-
-
-
-<section>
-
-
-<h2>🏆 Legnépszerűbb videók</h2>
-
-
-<div class="cards">
-
-
-
-<div class="card">
-
-<iframe src="https://www.youtube.com/embed/p-7he6DOw5U"></iframe>
-
-<h3>🥇 Top videó</h3>
-
-</div>
-
-
-
-
-<div class="card">
-
-<iframe src="https://www.youtube.com/embed/x78KOXLrz4A"></iframe>
-
-<h3>🥈 Top videó</h3>
-
-</div>
-
-
-
-
-<div class="card">
-
-<iframe src="https://www.youtube.com/embed/h3MewBkPAMc"></iframe>
-
-<h3>🥉 Top videó</h3>
-
-</div>
-
-
-</div>
-
-
-</section>
-
-
 
 
 
 
 <section id="shorts">
-
 
 <h2>⚡ FefeX Shorts</h2>
 
@@ -187,24 +94,43 @@ Gaming videók • Shorts • Közösség 🔥
 <div class="shorts">
 
 
-
 <iframe src="https://www.youtube.com/embed/BtOW0zSklF0"></iframe>
 
-
 <iframe src="https://www.youtube.com/embed/3Ee7GodIiMM"></iframe>
-
 
 <iframe src="https://www.youtube.com/embed/OxsMJ3ml30U"></iframe>
 
 
-<iframe src="https://www.youtube.com/embed/rl83DnK2_Jk"></iframe>
+</div>
 
 
-<iframe src="https://www.youtube.com/embed/vAubNtDC7rs"></iframe>
+</section>
 
 
-<iframe src="https://www.youtube.com/embed/HcX0xgUWml0"></iframe>
 
+
+
+<section id="quiz">
+
+<h2>🧠 FefeX Gaming Kvíz</h2>
+
+
+<div class="quiz-box">
+
+<h3 id="question">
+Kérdés betöltése...
+</h3>
+
+
+<div id="answers"></div>
+
+
+<p id="result"></p>
+
+
+<button onclick="nextQuestion()">
+Következő
+</button>
 
 
 </div>
@@ -216,111 +142,24 @@ Gaming videók • Shorts • Közösség 🔥
 
 
 
+<section id="contact">
 
-
-
-<section id="csatornak">
-
-
-<h2>🎮 Csatornák</h2>
-
-
-<div class="channels">
-
-
-
-<div class="channel">
-
-
-<img src="https://i.imgur.com/7QK5Z7A.png">
-
-
-<h3>FefeX Gaming</h3>
-
-<p>Gaming csatorna</p>
-
-
-<a href="https://www.youtube.com/@IgaziFefeX">
-YouTube
-</a>
-
-
-</div>
-
-
-
-
-
-<div class="channel">
-
-
-<img src="https://i.imgur.com/7QK5Z7A.png">
-
-
-<h3>FefeX Gaming 2026</h3>
-
-<p>Mellékcsatorna</p>
-
-
-<a href="https://www.youtube.com/@IgaziFefeX2026">
-YouTube
-</a>
-
-
-</div>
-
-
-
-
-
-<div class="channel">
-
-
-<img src="https://i.imgur.com/7QK5Z7A.png">
-
-
-<h3>FefeX Shorts</h3>
-
-<p>Shorts csatorna</p>
-
-
-<a href="https://www.youtube.com/@FefeXShorts">
-YouTube
-</a>
-
-
-</div>
-
-
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-
-
-<section id="kapcsolat">
-
-
-<h2>🌐 Kövess minket</h2>
+<h2>🌐 Kapcsolat</h2>
 
 
 <div class="social">
 
+<a href="https://www.youtube.com/@IgaziFefeX">
+▶ YouTube
+</a>
 
-<a href="https://www.tiktok.com/@fefexgaming2023">
+
+<a href="#">
 🎵 TikTok
 </a>
 
 
-<a href="https://www.instagram.com/fefex2026_/">
+<a href="#">
 📸 Instagram
 </a>
 
@@ -333,9 +172,6 @@ YouTube
 
 
 
-
-
-
 <footer>
 
 © 2026 FefeX Gaming 🎮
@@ -344,173 +180,7 @@ YouTube
 
 
 
-</body>
-
-</html>
-<!DOCTYPE html>
-<html lang="hu">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FefeX Gaming Kvíz</title>
-
-<style>
-body{
-    font-family:Arial,sans-serif;
-    background:linear-gradient(135deg,#111,#222,#333);
-    color:white;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
-    margin:0;
-}
-
-.quiz{
-    width:700px;
-    max-width:95%;
-    background:#1b1b1b;
-    padding:30px;
-    border-radius:20px;
-    box-shadow:0 0 25px rgba(0,255,255,.3);
-}
-
-h1{
-    text-align:center;
-    color:#00e5ff;
-}
-
-button{
-    display:block;
-    width:100%;
-    margin:10px 0;
-    padding:15px;
-    border:none;
-    border-radius:10px;
-    background:#333;
-    color:white;
-    font-size:18px;
-    cursor:pointer;
-    transition:.3s;
-}
-
-button:hover{
-    background:#00bcd4;
-    transform:scale(1.03);
-}
-
-#next{
-    background:#00bcd4;
-}
-
-#score{
-    text-align:center;
-    font-size:30px;
-    margin-top:20px;
-}
-</style>
-
-</head>
-<body>
-
-<div class="quiz">
-
-<h1>🎮 FefeX Gaming Kvíz</h1>
-
-<h2 id="question"></h2>
-
-<div id="answers"></div>
-
-<button id="next" onclick="nextQuestion()">Következő</button>
-
-<div id="score"></div>
-
-</div>
-
-<script>
-
-const quiz=[
-{
-question:"Mi a csatorna neve?",
-answers:["FefeN Gaming","FefeX Gaming","Fefe Plus","GamingX"],
-correct:1
-},
-{
-question:"Milyen témájú a csatorna?",
-answers:["Főzés","Gaming","Utazás","Autók"],
-correct:1
-},
-{
-question:"Melyik játék szerepelhet a csatornán?",
-answers:["Minecraft","Excel","Word","Paint"],
-correct:0
-},
-{
-question:"Hol található a csatorna?",
-answers:["Netflix","YouTube","Spotify","Facebook"],
-correct:1
-},
-{
-question:"Mit érdemes nyomni az új videókért?",
-answers:["Harang","Kilépés","Frissítés","Hangerő"],
-correct:0
-}
-];
-
-let current=0;
-let points=0;
-
-function loadQuestion(){
-
-document.getElementById("score").innerHTML="";
-
-document.getElementById("question").innerHTML=quiz[current].question;
-
-let html="";
-
-quiz[current].answers.forEach((a,i)=>{
-
-html+=`<button onclick="check(${i})">${a}</button>`;
-
-});
-
-document.getElementById("answers").innerHTML=html;
-
-}
-
-function check(i){
-
-if(i===quiz[current].correct){
-points++;
-}
-
-nextQuestion();
-
-}
-
-function nextQuestion(){
-
-current++;
-
-if(current<quiz.length){
-
-loadQuestion();
-
-}else{
-
-document.querySelector(".quiz").innerHTML=`
-<h1>🎉 Vége!</h1>
-<h2 id="score">${points} / ${quiz.length} pont</h2>
-<button onclick="location.reload()">Újra</button>
-`;
-
-}
-
-}
-
-loadQuestion();
-
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
