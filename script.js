@@ -1,78 +1,197 @@
-// FefeN Gaming Weboldal JavaScript 🚀
+// FefeX Gaming feliratkozó animáció
 
-// Oldal betöltési animáció
-window.addEventListener("load", () => {
-    document.body.classList.add("loaded");
+let subscribers = 306;
+
+let counter = document.getElementById("subs");
+
+let start = 0;
+
+let animation = setInterval(()=>{
+
+    if(start >= subscribers){
+
+        clearInterval(animation);
+
+    }else{
+
+        start++;
+
+        counter.innerHTML = start;
+
+    }
+
+},10);
+
+
+
+
+// Kvíz
+
+const questions = [
+
+{
+question:"🎮 Mi a csatorna neve?",
+answers:[
+"FefeX Gaming",
+"Gaming Pro",
+"Fefe Channel",
+"Game World"
+],
+correct:0
+},
+
+
+{
+question:"🔥 Milyen témával foglalkozik a csatorna?",
+answers:[
+"Főzés",
+"Gaming",
+"Sport",
+"Autók"
+],
+correct:1
+},
+
+
+{
+question:"⛏️ Melyik játék lehet a csatornán?",
+answers:[
+"Minecraft",
+"Excel",
+"Word",
+"Jegyzettömb"
+],
+correct:0
+},
+
+
+{
+question:"▶️ Hol található a csatorna?",
+answers:[
+"YouTube",
+"Netflix",
+"Spotify",
+"TV"
+],
+correct:0
+},
+
+
+{
+question:"🔔 Mit érdemes megnyomni új videókért?",
+answers:[
+"Kilépés",
+"Harang",
+"Törlés",
+"Frissítés"
+],
+correct:1
+}
+
+];
+
+
+
+let currentQuestion = 0;
+
+let score = 0;
+
+
+
+function loadQuestion(){
+
+
+let q = questions[currentQuestion];
+
+
+document.getElementById("question").innerHTML=q.question;
+
+
+let buttons="";
+
+
+q.answers.forEach((answer,index)=>{
+
+
+buttons +=
+
+`
+<button onclick="checkAnswer(${index})">
+${answer}
+</button>
+`;
+
 });
 
 
-// Görgetés animáció
-const sections = document.querySelectorAll("section");
-
-window.addEventListener("scroll", () => {
-    sections.forEach(section => {
-        const top = section.getBoundingClientRect().top;
-        const height = window.innerHeight;
-
-        if (top < height - 100) {
-            section.classList.add("show");
-        }
-    });
-});
+document.getElementById("answers").innerHTML=buttons;
 
 
-// YouTube gomb animáció
-const buttons = document.querySelectorAll("a, button");
-
-buttons.forEach(button => {
-    button.addEventListener("mouseenter", () => {
-        button.style.transform = "scale(1.08)";
-    });
-
-    button.addEventListener("mouseleave", () => {
-        button.style.transform = "scale(1)";
-    });
-});
+document.getElementById("result").innerHTML="";
 
 
-// Feliratkozó számláló animáció
-let subscribers = 260;
-
-const counter = document.querySelector("#subscriber-count");
-
-if(counter){
-    let number = 0;
-
-    let animation = setInterval(() => {
-        number++;
-
-        counter.innerHTML = number + " feliratkozó";
-
-        if(number >= subscribers){
-            clearInterval(animation);
-        }
-
-    },5);
 }
 
 
-// Menü görgetés
-document.querySelectorAll("a[href^='#']").forEach(link => {
-
-    link.addEventListener("click", function(e){
-
-        e.preventDefault();
-
-        document.querySelector(this.getAttribute("href"))
-        .scrollIntoView({
-            behavior:"smooth"
-        });
-
-    });
-
-});
 
 
-// Üdvözlő üzenet
-console.log("🎮 FefeN Gaming weboldal betöltve!");
-console.log("🔥 Készült JavaScript segítségével");
+
+function checkAnswer(answer){
+
+
+if(answer === questions[currentQuestion].correct){
+
+score++;
+
+document.getElementById("result").innerHTML="✅ Helyes!";
+
+}else{
+
+document.getElementById("result").innerHTML="❌ Hibás!";
+
+}
+
+
+}
+
+
+
+function nextQuestion(){
+
+
+currentQuestion++;
+
+
+if(currentQuestion < questions.length){
+
+
+loadQuestion();
+
+
+}
+
+else{
+
+
+document.querySelector(".quiz-box").innerHTML=
+
+`
+
+<h2>🎉 Kész a kvíz!</h2>
+
+<h3>Eredmény: ${score}/${questions.length}</h3>
+
+<button onclick="location.reload()">
+Újra
+</button>
+
+`;
+
+}
+
+
+}
+
+
+
+loadQuestion();
