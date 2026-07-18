@@ -1,30 +1,48 @@
 // FefeX Gaming - Élő YouTube feliratkozó számláló
 
 
-const API_KEY = "IDE_ÍRD_A_YOUTUBE_API_KULCSOT";
+const API_KEY = "IDE_TEDD_A_YOUTUBE_API_KULCSOT";
 
 const CHANNEL_ID = "UC4YuGG7PDePx_NGdrb05Yxw";
 
 
 
-async function updateSubscribers(){
+async function getSubscribers(){
 
     try{
 
-        const response = await fetch(
-        `https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${CHANNEL_ID}&key=${API_KEY}`
-        );
+        const url =
+        `https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${CHANNEL_ID}&key=${API_KEY}`;
+
+
+        const response = await fetch(url);
 
 
         const data = await response.json();
 
 
-        const count =
-        data.items[0].statistics.subscriberCount;
+
+        if(data.items && data.items.length > 0){
 
 
-        document.getElementById("subs").innerHTML =
-        Number(count).toLocaleString("hu-HU");
+            const subscribers =
+            data.items[0].statistics.subscriberCount;
+
+
+
+            document.getElementById("subs").innerHTML =
+            Number(subscribers).toLocaleString("hu-HU");
+
+
+
+        }else{
+
+
+            document.getElementById("subs").innerHTML =
+            "Nincs adat";
+
+
+        }
 
 
     }
@@ -32,23 +50,27 @@ async function updateSubscribers(){
 
     catch(error){
 
-        console.log("Hiba:", error);
+
+        console.log("YouTube API hiba:", error);
+
 
         document.getElementById("subs").innerHTML =
-        "Nem elérhető";
+        "Hiba";
+
 
     }
+
 
 }
 
 
 
-// első betöltés
+// Betöltéskor frissít
 
-updateSubscribers();
+getSubscribers();
 
 
 
-// frissítés 5 percenként
+// 5 percenként újra lekéri
 
-setInterval(updateSubscribers,300000);
+setInterval(getSubscribers, 300000);
