@@ -1,76 +1,65 @@
-// FefeX Gaming - Élő YouTube feliratkozó számláló
+// FefeX Gaming - script.js
 
+// Év automatikus frissítése a láblécben
+const ev = document.getElementById("ev");
 
-const API_KEY = "IDE_TEDD_A_YOUTUBE_API_KULCSOT";
-
-const CHANNEL_ID = "UC4YuGG7PDePx_NGdrb05Yxw";
-
-
-
-async function getSubscribers(){
-
-    try{
-
-        const url =
-        `https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${CHANNEL_ID}&key=${API_KEY}`;
-
-
-        const response = await fetch(url);
-
-
-        const data = await response.json();
-
-
-
-        if(data.items && data.items.length > 0){
-
-
-            const subscribers =
-            data.items[0].statistics.subscriberCount;
-
-
-
-            document.getElementById("subs").innerHTML =
-            Number(subscribers).toLocaleString("hu-HU");
-
-
-
-        }else{
-
-
-            document.getElementById("subs").innerHTML =
-            "Nincs adat";
-
-
-        }
-
-
-    }
-
-
-    catch(error){
-
-
-        console.log("YouTube API hiba:", error);
-
-
-        document.getElementById("subs").innerHTML =
-        "Hiba";
-
-
-    }
-
-
+if (ev) {
+    ev.textContent = new Date().getFullYear();
 }
 
 
+// Menü animáció mobilhoz
+const menuBtn = document.querySelector(".menu-btn");
+const menu = document.querySelector(".menu");
 
-// Betöltéskor frissít
+if (menuBtn && menu) {
+    menuBtn.addEventListener("click", () => {
+        menu.classList.toggle("active");
+    });
+}
 
-getSubscribers();
+
+// Görgetés animáció
+const elemek = document.querySelectorAll(".animacio");
+
+function megjelenites() {
+    elemek.forEach(elem => {
+        const hely = elem.getBoundingClientRect().top;
+        const ablak = window.innerHeight;
+
+        if (hely < ablak - 100) {
+            elem.classList.add("mutat");
+        }
+    });
+}
+
+window.addEventListener("scroll", megjelenites);
+megjelenites();
 
 
+// Feliratkozó számláló (kézzel állítható)
+let feliratkozok = 306;
 
-// 5 percenként újra lekéri
+const szamlalo = document.getElementById("feliratkozok");
 
-setInterval(getSubscribers, 300000);
+if (szamlalo) {
+    szamlalo.textContent = feliratkozok + " feliratkozó";
+}
+
+
+// Gomb kattintás effekt
+const gombok = document.querySelectorAll("button, .gomb");
+
+gombok.forEach(gomb => {
+    gomb.addEventListener("click", () => {
+        gomb.style.transform = "scale(0.95)";
+
+        setTimeout(() => {
+            gomb.style.transform = "scale(1)";
+        }, 150);
+    });
+});
+
+
+// Üdvözlő üzenet a konzolban
+console.log("🎮 FefeX Gaming weboldal betöltve!");
