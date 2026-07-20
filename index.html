@@ -1,359 +1,74 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="hu">
-
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>FefeX Gaming 🎮</title>
-
-<link rel="stylesheet" href="style.css">
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090a12">
+  <title>FEFEN — Gaming közösség</title>
+  <style>
+    :root { --bg:#090a12; --panel:#11131f; --text:#f4f5fb; --muted:#a2a6bb; --lime:#c8ff4b; --violet:#9b6cff; --line:rgba(255,255,255,.11); }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; overflow-x:hidden; color:var(--text); background:var(--bg); font:16px/1.55 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    a { color:inherit; text-decoration:none; }
+    .grain { position:fixed; inset:0; z-index:-1; opacity:.14; pointer-events:none; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.4'/%3E%3C/svg%3E"); }
+    .wrap { width:min(1160px, calc(100% - 40px)); margin:auto; }
+    header { position:sticky; top:0; z-index:5; backdrop-filter:blur(16px); background:rgba(9,10,18,.75); border-bottom:1px solid var(--line); }
+    .nav { height:72px; display:flex; align-items:center; justify-content:space-between; gap:24px; }
+    .brand { display:flex; gap:10px; align-items:center; font-size:1.25rem; font-weight:900; letter-spacing:.08em; }
+    .brand-mark { display:grid; place-items:center; width:33px; aspect-ratio:1; background:var(--lime); color:#12130f; clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%); font-size:.85rem; }
+    nav { display:flex; gap:28px; color:var(--muted); font-size:.91rem; }
+    nav a:hover { color:var(--lime); }
+    .button { display:inline-flex; align-items:center; justify-content:center; gap:8px; border:1px solid var(--lime); padding:11px 17px; color:#14160d; background:var(--lime); font-weight:800; transition:.2s transform,.2s background; }
+    .button:hover { transform:translateY(-2px); background:#dcff87; }
+    .button.alt { background:transparent; color:var(--text); border-color:var(--line); }
+    .button.alt:hover { border-color:var(--violet); }
+    .hero { position:relative; min-height:650px; display:grid; align-content:center; padding:90px 0 64px; }
+    .hero:before { content:""; position:absolute; width:680px; height:680px; right:-120px; top:-45px; z-index:-1; border-radius:50%; background:radial-gradient(circle,rgba(155,108,255,.43),rgba(155,108,255,0) 67%); filter:blur(8px); }
+    .eyebrow { display:flex; align-items:center; gap:10px; color:var(--lime); font-weight:800; font-size:.75rem; letter-spacing:.16em; text-transform:uppercase; }
+    .dot { width:8px; height:8px; border-radius:99px; background:var(--lime); box-shadow:0 0 0 5px rgba(200,255,75,.12); }
+    h1 { max-width:800px; margin:20px 0; font-size:clamp(3.2rem,8vw,7.1rem); line-height:.91; letter-spacing:-.075em; }
+    h1 em { color:var(--lime); font-style:normal; }
+    .lead { max-width:570px; margin:0 0 30px; color:var(--muted); font-size:1.12rem; }
+    .actions { display:flex; flex-wrap:wrap; gap:12px; }
+    .hero-stats { position:absolute; bottom:52px; right:0; display:flex; border:1px solid var(--line); background:rgba(17,19,31,.72); backdrop-filter:blur(10px); }
+    .stat { padding:18px 25px; min-width:125px; border-right:1px solid var(--line); } .stat:last-child { border:0; }
+    .stat b { display:block; font-size:1.45rem; } .stat span { color:var(--muted); font-size:.78rem; }
+    section { padding:90px 0; }
+    .heading { display:flex; align-items:end; justify-content:space-between; gap:30px; margin-bottom:30px; }
+    h2 { margin:0; max-width:600px; font-size:clamp(2rem,4vw,3.4rem); line-height:1; letter-spacing:-.055em; }
+    .heading p { max-width:340px; margin:0; color:var(--muted); }
+    .games { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+    .game { position:relative; min-height:355px; padding:24px; overflow:hidden; display:flex; flex-direction:column; justify-content:end; background:var(--panel); border:1px solid var(--line); transition:.25s transform,.25s border; }
+    .game:hover { transform:translateY(-5px); border-color:var(--lime); }
+    .game:before { content:""; position:absolute; inset:0; opacity:.85; background:linear-gradient(180deg,transparent 30%,rgba(9,10,18,.95)),var(--art); background-size:cover; background-position:center; transition:.3s transform; } .game:hover:before { transform:scale(1.06); }
+    .game > * { position:relative; } .badge { align-self:start; padding:5px 9px; background:var(--lime); color:#13140f; font-size:.7rem; font-weight:900; text-transform:uppercase; }
+    .game h3 { margin:54px 0 4px; font-size:1.5rem; } .game p { margin:0; color:#d1d4df; font-size:.9rem; }
+    .community { border:1px solid var(--line); background:linear-gradient(120deg, #15192a, #11131f 57%, #241945); padding:clamp(28px,6vw,75px); display:grid; grid-template-columns:1.2fr .8fr; gap:40px; align-items:center; overflow:hidden; }
+    .community p { color:var(--muted); max-width:510px; } .community .button { margin-top:12px; }
+    .orbs { position:relative; min-height:210px; } .orb { position:absolute; border-radius:50%; background:radial-gradient(circle at 35% 28%,#f1ebff,#8a58ff 45%,#38226b 72%); box-shadow:0 25px 50px rgba(0,0,0,.5); }
+    .orb.a { width:185px; height:185px; right:42px; top:4px; } .orb.b { width:92px; height:92px; left:30px; bottom:5px; background:radial-gradient(circle at 35% 28%,#f5ffcb,#c8ff4b 40%,#628022 73%); } .orb.c { width:42px; height:42px; right:0; bottom:18px; background:#fff; }
+    footer { border-top:1px solid var(--line); padding:27px 0; color:var(--muted); font-size:.85rem; } .foot { display:flex; justify-content:space-between; gap:20px; } .foot b { color:var(--text); }
+    @media (max-width:760px) { .wrap { width:min(100% - 30px,1160px); } nav { display:none; } .hero { min-height:610px; padding-top:70px; } .hero-stats { position:static; width:max-content; margin-top:55px; } .stat { min-width:100px; padding:13px 14px; } .heading { display:block; } .heading p { margin-top:14px; } .games { grid-template-columns:1fr; } .game { min-height:290px; } .community { grid-template-columns:1fr; } .orbs { min-height:150px; } .orb.a { width:140px;height:140px;right:15px; } .foot { flex-direction:column; } }
+  </style>
 </head>
-
-
 <body>
-
-
-<header>
-
-<div class="logo">
-🎮 <span>FefeX Gaming</span>
-</div>
-
-
-<nav>
-<a href="#home">Főoldal</a>
-<a href="#latest">Videók</a>
-<a href="#popular">Népszerű</a>
-<a href="#shorts">Shorts</a>
-<a href="#channels">Csatornák</a>
-<a href="#social">Kapcsolat</a>
-</nav>
-
-
-</header>
-
-
-
-
-
-<section class="hero" id="home">
-
-
-<div class="hero-text">
-
-
-<h1>
-FefeX Gaming 🎮
-</h1>
-
-
-<p>
-Gaming videók • Shorts • Közösség 🔥
-</p>
-
-
-
-<div class="subscriber-box">
-
-<h2>Feliratkozók</h2>
-
-<div id="subs">
-306
-</div>
-
-<p>feliratkozó</p>
-
-</div>
-
-
-
-
-<a class="youtube-btn"
-href="https://www.youtube.com/@IgaziFefeX"
-target="_blank">
-
-▶ YouTube csatorna
-
-</a>
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-
-
-<section id="latest">
-
-
-<h2>🎬 Legújabb videók</h2>
-
-
-<div class="video-grid">
-
-
-
-<div class="video-card">
-
-<iframe src="https://www.youtube.com/embed/qqLNdh8GU74"></iframe>
-
-<h3>Legújabb videó #1</h3>
-
-</div>
-
-
-
-
-<div class="video-card">
-
-<iframe src="https://www.youtube.com/embed/PXT6gbVlDP0"></iframe>
-
-<h3>Legújabb videó #2</h3>
-
-</div>
-
-
-
-
-<div class="video-card">
-
-<iframe src="https://www.youtube.com/embed/x1f4SQ5ze0g"></iframe>
-
-<h3>Legújabb videó #3</h3>
-
-</div>
-
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-
-
-<section id="popular">
-
-
-<h2>🏆 Legnépszerűbb videók</h2>
-
-
-<div class="video-grid">
-
-
-
-<div class="video-card">
-
-<iframe src="https://www.youtube.com/embed/p-7he6DOw5U"></iframe>
-
-<h3>🥇 Top videó</h3>
-
-</div>
-
-
-
-<div class="video-card">
-
-<iframe src="https://www.youtube.com/embed/x78KOXLrz4A"></iframe>
-
-<h3>🥈 Top videó</h3>
-
-</div>
-
-
-
-<div class="video-card">
-
-<iframe src="https://www.youtube.com/embed/h3MewBkPAMc"></iframe>
-
-<h3>🥉 Top videó</h3>
-
-</div>
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-
-
-<section id="shorts">
-
-
-<h2>⚡ FefeX Shorts</h2>
-
-
-<div class="shorts-grid">
-
-
-<iframe src="https://www.youtube.com/embed/BtOW0zSklF0"></iframe>
-
-<iframe src="https://www.youtube.com/embed/3Ee7GodIiMM"></iframe>
-
-<iframe src="https://www.youtube.com/embed/OxsMJ3ml30U"></iframe>
-
-<iframe src="https://www.youtube.com/embed/rl83DnK2_Jk"></iframe>
-
-<iframe src="https://www.youtube.com/embed/vAubNtDC7rs"></iframe>
-
-<iframe src="https://www.youtube.com/embed/HcX0xgUWml0"></iframe>
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-
-
-<section id="channels">
-
-
-<h2>🎮 Csatornák</h2>
-
-
-<div class="channel-grid">
-
-
-
-<div class="channel-card">
-
-<h3>🎮 FefeX Gaming</h3>
-
-<p>
-Fő gaming csatorna
-</p>
-
-<a href="https://www.youtube.com/@IgaziFefeX">
-YouTube
-</a>
-
-</div>
-
-
-
-
-
-<div class="channel-card">
-
-<h3>🔥 FefeX Gaming 2026</h3>
-
-<p>
-Másodlagos csatorna
-</p>
-
-<a href="https://www.youtube.com/@IgaziFefeX2026">
-YouTube
-</a>
-
-</div>
-
-
-
-
-
-<div class="channel-card">
-
-<h3>⚡ FefeX Shorts</h3>
-
-<p>
-Rövid videók
-</p>
-
-<a href="https://www.youtube.com/@FefeXShorts">
-YouTube
-</a>
-
-</div>
-
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-
-
-<section id="social">
-
-
-<h2>🌐 Közösségi oldalak</h2>
-
-
-<div class="social-buttons">
-
-
-<a href="https://www.youtube.com/@IgaziFefeX">
-▶ YouTube
-</a>
-
-
-<a href="https://www.tiktok.com/@fefexgaming2023">
-🎵 TikTok
-</a>
-
-
-<a href="https://www.instagram.com/fefex2026_/">
-📸 Instagram
-</a>
-
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-
-
-<footer>
-
-<p>
-© 2026 FefeX Gaming 🎮
-</p>
-
-</footer>
-
-
-<script src="script.js"></script>
+  <div class="grain"></div>
+  <header><div class="wrap nav"><a class="brand" href="#top"><span class="brand-mark">F</span>FEFEN</a><nav><a href="#jatekok">Játékok</a><a href="#kozosseg">Közösség</a><a href="#rolunk">Rólunk</a></nav><a class="button" href="#kozosseg">Csatlakozom <span>↗</span></a></div></header>
+  <main id="top">
+    <div class="wrap hero">
+      <div class="eyebrow"><span class="dot"></span> A játék itt kezdődik</div>
+      <h1>Nem csak játszunk.<br><em>Legendákat</em> írunk.</h1>
+      <p class="lead">A FEFEN egy közösség azoknak, akik nem elégednek meg az átlagossal. Találj csapatot, mérd össze a tudásod, és érezd jól magad velünk.</p>
+      <div class="actions"><a class="button" href="#jatekok">Fedezd fel a játékokat <span>↓</span></a><a class="button alt" href="#rolunk">Ismerj meg minket</a></div>
+      <div class="hero-stats"><div class="stat"><b>1 200+</b><span>aktív játékos</span></div><div class="stat"><b>24/7</b><span>online közösség</span></div><div class="stat"><b>∞</b><span>jó pillanat</span></div></div>
+    </div>
+    <section class="wrap" id="jatekok"><div class="heading"><h2>Találd meg a következő kedvenc játékodat.</h2><p>Verseny, kaland vagy laza esti játék — itt mindig találsz valakit a következő körre.</p></div>
+      <div class="games"><article class="game" style="--art:radial-gradient(circle at 65% 22%,#ffcc5b 0 4%,transparent 5%),linear-gradient(135deg,#1d354d,#c04d46 54%,#f4b443);"><span class="badge">Akció</span><h3>Valorant</h3><p>Pontos lövések, okos taktikák, egy összeszokott csapat.</p></article><article class="game" style="--art:radial-gradient(circle at 45% 25%,#71eeff,transparent 18%),linear-gradient(135deg,#091931,#0f7d86 52%,#68d5c9);"><span class="badge">Kaland</span><h3>Minecraft</h3><p>Építs, fedezz fel, és alkoss valami igazán sajátot.</p></article><article class="game" style="--art:radial-gradient(circle at 66% 18%,#d9e0ff,transparent 15%),linear-gradient(135deg,#15152e,#493b8d 45%,#e35c9d);"><span class="badge">Verseny</span><h3>League of Legends</h3><p>Öt játékos. Egy cél. A következő győzelem már vár rád.</p></article></div>
+    </section>
+    <section class="wrap" id="kozosseg"><div class="community"><div><div class="eyebrow">Együtt erősebbek vagyunk</div><h2>Lépj be a közösségbe.</h2><p>Keress társakat, ossz meg tippeket, és csatlakozz a rendszeres közös játékokhoz. Kezdőként és veteránként is van helyed nálunk.</p><a class="button" href="mailto:hello@fefen.hu">Kapcsolatfelvétel <span>↗</span></a></div><div class="orbs" aria-hidden="true"><div class="orb a"></div><div class="orb b"></div><div class="orb c"></div></div></div></section>
+    <section class="wrap" id="rolunk"><div class="heading"><h2>Játékosok által, játékosoknak.</h2><p>Nem egy arctalan szerver vagyunk: egy jó hangulatú hely, ahol a játék mindenkié.</p></div></section>
+  </main>
+  <footer><div class="wrap foot"><div><b>FEFEN</b> — Gaming közösség</div><div>© 2026 · Minden jog fenntartva</div></div></footer>
 </body>
-
 </html>
