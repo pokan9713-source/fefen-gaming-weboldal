@@ -1,47 +1,56 @@
-// BETÖLTŐ ANIMÁCIÓ
+// ======================
+// BETÖLTŐ
+// ======================
 
 window.addEventListener("load",()=>{
 
-    const loader=document.getElementById("loader");
+    const loader = document.getElementById("loader");
 
     setTimeout(()=>{
 
-        loader.style.display="none";
+        loader.style.opacity="0";
 
-    },1500);
+        setTimeout(()=>{
+
+            loader.style.display="none";
+
+        },500);
+
+    },1200);
 
 });
 
 
 
 
-
+// ======================
 // GÉPELŐ ANIMÁCIÓ
+// ======================
 
 
-const text="A legjobb gaming élmények egy helyen 🎮";
+const text = "A legjobb gaming élmények egy helyen 🎮";
 
-let index=0;
+const typing = document.getElementById("typing");
 
-const typing=document.getElementById("typing");
+let i = 0;
 
 
-function typeWriter(){
+function typeEffect(){
 
-    if(index < text.length){
+    if(i < text.length){
 
-        typing.innerHTML += text.charAt(index);
+        typing.innerHTML += text.charAt(i);
 
-        index++;
+        i++;
 
-        setTimeout(typeWriter,80);
+        setTimeout(typeEffect,70);
 
     }
 
 }
 
 
-typeWriter();
+typeEffect();
 
 
 
@@ -49,100 +58,120 @@ typeWriter();
 
 
 
+// ======================
+// STATISZTIKA SZÁMLÁLÓ
+// ======================
 
-// FELIRATKOZÓ SZÁMLÁLÓ
 
-
-const counters=document.querySelectorAll(".counter");
+const counters = document.querySelectorAll(".counter");
 
 
 counters.forEach(counter=>{
 
 
-counter.innerText="0";
+let start = 0;
 
-
-const updateCounter=()=>{
-
-
-const target=+counter.getAttribute("data-target");
-
-
-const current=+counter.innerText;
-
-
-const increment=target/100;
+const target = Number(counter.dataset.target);
 
 
 
-if(current < target){
+function count(){
 
 
-counter.innerText=Math.ceil(current+increment);
+if(start < target){
 
 
-setTimeout(updateCounter,20);
+start += Math.ceil(target/100);
 
 
-}else{
+if(start > target){
+
+start = target;
+
+}
 
 
-counter.innerText=target.toLocaleString();
+counter.innerHTML = start.toLocaleString();
+
+
+setTimeout(count,25);
+
+
+}
+
+
+}
+
+
+count();
+
+
+});
+
+
+
+
+
+
+
+// ======================
+// SCROLL ANIMÁCIÓ
+// ======================
+
+
+const elements = document.querySelectorAll(
+
+".video-card, .short-card, .stat-box, .timeline div"
+
+);
+
+
+
+elements.forEach(el=>{
+
+el.style.opacity="0";
+
+el.style.transform="translateY(40px)";
+
+el.style.transition="0.6s";
+
+
+});
+
+
+
+
+function reveal(){
+
+
+elements.forEach(el=>{
+
+
+let top = el.getBoundingClientRect().top;
+
+
+if(top < window.innerHeight - 80){
+
+
+el.style.opacity="1";
+
+el.style.transform="translateY(0)";
 
 
 }
 
 
 
-};
-
-
-updateCounter();
-
-
 });
 
 
+}
 
 
 
+window.addEventListener("scroll",reveal);
 
-
-
-// MINI JÁTÉK
-
-
-let score=0;
-
-
-const button=document.getElementById("gameButton");
-
-const scoreText=document.getElementById("score");
-
-
-
-button.addEventListener("click",()=>{
-
-
-score++;
-
-
-scoreText.innerHTML="Pont: "+score;
-
-
-
-button.style.transform="scale(1.2)";
-
-
-setTimeout(()=>{
-
-button.style.transform="scale(1)";
-
-},150);
-
-
-
-});
+reveal();
 
 
 
@@ -151,76 +180,34 @@ button.style.transform="scale(1)";
 
 
 
+// ======================
 // MOBIL MENÜ
+// ======================
 
 
-const menu=document.querySelector(".menu");
+const menu = document.querySelector(".menu");
 
-const nav=document.querySelector("nav");
-
+const nav = document.querySelector("nav");
 
 
 menu.addEventListener("click",()=>{
 
 
-if(nav.style.display==="block"){
+if(nav.style.display==="flex"){
 
 nav.style.display="none";
 
 
 }else{
 
+nav.style.display="flex";
 
-nav.style.display="block";
-
-
-}
-
-
-
-});
-
-
-
-
-
-
-
-
-// KÁRTYA ANIMÁCIÓ
-
-
-const cards=document.querySelectorAll(".video-card,.stat-box,.short-card");
-
-
-
-window.addEventListener("scroll",()=>{
-
-
-cards.forEach(card=>{
-
-
-let position=card.getBoundingClientRect().top;
-
-
-let screen=window.innerHeight;
-
-
-if(position < screen-100){
-
-
-card.style.opacity="1";
-
-card.style.transform="translateY(0)";
+nav.style.flexDirection="column";
 
 
 }
 
 
-
-});
-
-
 });
 
 
@@ -229,22 +216,63 @@ card.style.transform="translateY(0)";
 
 
 
-// EGÉR MOZGÁS EFFEKT
+// ======================
+// EGÉR FÉNY EFFEKT
+// ======================
+
+
+const circle = document.querySelector(".hero-circle");
+
 
 
 document.addEventListener("mousemove",(e)=>{
 
 
-const circle=document.querySelector(".hero-circle");
+let x = e.clientX / 40;
+
+let y = e.clientY / 40;
 
 
-let x=e.clientX/50;
 
-let y=e.clientY/50;
-
-
-circle.style.transform=
+circle.style.transform =
 `translate(${x}px,${y}px)`;
+
+
+});
+
+
+
+
+
+
+
+// ======================
+// VIDEÓ KÁRTYA KATTINTÁS EFFEKT
+// ======================
+
+
+const cards = document.querySelectorAll(".video-card,.short-card");
+
+
+cards.forEach(card=>{
+
+
+card.addEventListener("mouseenter",()=>{
+
+
+card.style.zIndex="5";
+
+
+});
+
+
+card.addEventListener("mouseleave",()=>{
+
+
+card.style.zIndex="1";
+
+
+});
 
 
 });
