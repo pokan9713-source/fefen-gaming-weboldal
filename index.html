@@ -1,486 +1,448 @@
 <!DOCTYPE html>
 <html lang="hu">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=1280">
-  <title>FefeX Gaming</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --black: #08080c;
-      --panel: #171722;
-      --line: #2b2b3b;
-      --white: #f7f7fb;
-      --muted: #a2a2b5;
-      --lime: #d5ff48;
-      --purple: #9a69ff;
-    }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-
-    body {
-      margin: 0;
-      background: var(--black);
-      color: var(--white);
-      font-family: Montserrat, Arial, sans-serif;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .shell {
-      width: 1180px;
-      margin: auto;
-    }
-
-    header {
-      height: 90px;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: rgba(8, 8, 12, .92);
-      border-bottom: 1px solid var(--line);
-      backdrop-filter: blur(18px);
-    }
-
-    .nav {
-      height: 90px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 19px;
-      font-weight: 900;
-    }
-
-    .brand img {
-      width: 43px;
-      height: 43px;
-      object-fit: cover;
-      border: 1px solid var(--purple);
-      border-radius: 50%;
-      box-shadow: 0 0 18px rgba(154, 105, 255, .45);
-    }
-
-    nav {
-      display: flex;
-      gap: 33px;
-      color: var(--muted);
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: .07em;
-      text-transform: uppercase;
-    }
-
-    nav a:hover { color: var(--lime); }
-
-    .subscribe,
-    .watch {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 14px 20px;
-      background: var(--lime);
-      color: #11130a;
-      font-size: 12px;
-      font-weight: 900;
-      letter-spacing: .05em;
-      text-transform: uppercase;
-      transition: .2s;
-    }
-
-    .subscribe:hover,
-    .watch:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 25px rgba(213, 255, 72, .2);
-    }
-
-    .hero {
-      min-height: 625px;
-      display: flex;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .hero::before {
-      content: "";
-      width: 620px;
-      height: 620px;
-      position: absolute;
-      top: -150px;
-      right: -90px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(154, 105, 255, .45), transparent 66%);
-    }
-
-    .hero::after {
-      content: "▶";
-      position: absolute;
-      right: 50px;
-      bottom: -100px;
-      color: rgba(255, 255, 255, .04);
-      font-size: 520px;
-      font-weight: 900;
-    }
-
-    .hero-copy {
-      width: 730px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero-logo {
-      width: 104px;
-      height: 104px;
-      margin-bottom: 20px;
-      object-fit: cover;
-      border: 2px solid var(--purple);
-      border-radius: 50%;
-      box-shadow: 0 0 35px rgba(154, 105, 255, .45);
-    }
-
-    .eyebrow {
-      display: flex;
-      align-items: center;
-      gap: 9px;
-      color: var(--lime);
-      font-size: 11px;
-      font-weight: 900;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-    }
-
-    .eyebrow::before {
-      content: "";
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--lime);
-      box-shadow: 0 0 0 6px rgba(213, 255, 72, .1);
-    }
-
-    .hero h1 {
-      margin: 23px 0 18px;
-      font-size: 83px;
-      line-height: .91;
-      letter-spacing: -6px;
-    }
-
-    .hero h1 span { color: var(--lime); }
-
-    .hero p {
-      max-width: 560px;
-      margin: 0;
-      color: var(--muted);
-      font-size: 16px;
-      line-height: 1.7;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 12px;
-      margin-top: 32px;
-    }
-
-    .ghost {
-      padding: 13px 19px;
-      border: 1px solid rgba(255,255,255,.25);
-      font-size: 12px;
-      font-weight: 900;
-      letter-spacing: .05em;
-      text-transform: uppercase;
-    }
-
-    .ghost:hover {
-      color: var(--purple);
-      border-color: var(--purple);
-    }
-
-    .stats {
-      display: flex;
-      width: max-content;
-      margin-top: 62px;
-      background: rgba(11, 11, 17, .8);
-      border: 1px solid var(--line);
-    }
-
-    .stat {
-      min-width: 133px;
-      padding: 14px 25px;
-      border-right: 1px solid var(--line);
-    }
-
-    .stat:last-child { border: 0; }
-
-    .stat b {
-      display: block;
-      font: 700 20px "Space Mono", monospace;
-    }
-
-    .stat span {
-      color: var(--muted);
-      font-size: 10px;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-    }
-
-    .section { padding: 95px 0; }
-
-    .section-head {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      margin-bottom: 30px;
-    }
-
-    .section h2 {
-      margin: 0;
-      font-size: 38px;
-      letter-spacing: -2.6px;
-    }
-
-    .section-sub {
-      margin: 9px 0 0;
-      color: var(--muted);
-      font-size: 12px;
-    }
-
-    .more {
-      color: var(--lime);
-      font-size: 11px;
-      font-weight: 900;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-    }
-
-    .featured {
-      display: grid;
-      grid-template-columns: 680px 1fr;
-      min-height: 360px;
-      background: var(--panel);
-      border: 1px solid var(--line);
-    }
-
-    .feature-art {
-      display: grid;
-      place-items: center;
-      overflow: hidden;
-      background:
-        linear-gradient(110deg, rgba(8,8,12,.6), transparent 70%),
-        url("https://i.ytimg.com/vi/qqLNdh8GU74/maxresdefault.jpg") center/cover;
-    }
-
-    .play {
-      display: grid;
-      place-items: center;
-      width: 74px;
-      height: 74px;
-      padding-left: 5px;
-      border-radius: 50%;
-      background: var(--lime);
-      color: #15170a;
-      font-size: 25px;
-    }
-
-    .feature-info {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 48px 44px;
-    }
-
-    .meta {
-      color: var(--lime);
-      font-size: 10px;
-      font-weight: 900;
-      letter-spacing: .13em;
-      text-transform: uppercase;
-    }
-
-    .feature-info h3 {
-      margin: 14px 0;
-      font-size: 31px;
-      line-height: 1.08;
-      letter-spacing: -1.6px;
-    }
-
-    .feature-info p {
-      margin: 0 0 25px;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.7;
-    }
-
-    .feature-info .watch { align-self: start; }
-
-    .videos {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .card {
-      overflow: hidden;
-      background: var(--panel);
-      border: 1px solid var(--line);
-      transition: .25s;
-    }
-
-    .card:hover {
-      transform: translateY(-7px);
-      border-color: var(--lime);
-    }
-
-    .thumb {
-      height: 200px;
-      display: grid;
-      place-items: center;
-      position: relative;
-      background-position: center;
-      background-size: cover;
-    }
-
-    .thumb::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, transparent, rgba(0,0,0,.6));
-    }
-
-    .thumb b {
-      z-index: 1;
-      display: grid;
-      place-items: center;
-      width: 44px;
-      height: 44px;
-      border: 1px solid rgba(255,255,255,.55);
-      border-radius: 50%;
-      font-size: 15px;
-    }
-
-    .time {
-      position: absolute;
-      right: 11px;
-      bottom: 10px;
-      z-index: 2;
-      padding: 4px 7px;
-      background: rgba(8,8,12,.85);
-      font: 700 10px "Space Mono", monospace;
-    }
-
-    .card-copy { padding: 17px; }
-
-    .card h3 {
-      margin: 0 0 8px;
-      font-size: 15px;
-      line-height: 1.3;
-    }
-
-    .card p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 11px;
-    }
-
-    .strip {
-      background: linear-gradient(110deg, #171323, #1b2034);
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .channel-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .channel {
-      min-height: 220px;
-      padding: 27px;
-      position: relative;
-      overflow: hidden;
-      background: #0e0e16;
-      border: 1px solid var(--line);
-    }
-
-    .channel::before {
-      content: "";
-      position: absolute;
-      right: -45px;
-      bottom: -58px;
-      width: 145px;
-      height: 145px;
-      border-radius: 50%;
-      background: var(--accent);
-      filter: blur(14px);
-      opacity: .45;
-    }
-
-    .channel-logo,
-    .channel h3,
-    .channel p,
-    .channel a {
-      position: relative;
-    }
-
-    .channel-logo {
-      width: 54px;
-      height: 54px;
-      margin-bottom: 14px;
-      object-fit: cover;
-      border: 1px solid var(--purple);
-      border-radius: 50%;
-    }
-
-    .channel h3 {
-      margin: 0 0 8px;
-      font-size: 20px;
-      letter-spacing: -1px;
-    }
-
-    .channel p {
-      margin: 0 0 22px;
-      color: var(--muted);
-      font-size: 12px;
-    }
-
-    .channel a {
-      color: var(--lime);
-      font-size: 11px;
-      font-weight: 900;
-      text-transform: uppercase;
-    }
-
-    .about {
-      display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap: 80px;
-      padding: 58px 65px;
-      background: #15151f;
-      border: 1px solid var(--line);
-    }
-
-    .about h2 {
-      margin: 15px 0 0;
-      font-size: 44px;
-      line-height: 1;
-      letter-spacing: -2px;
-    }
-
-    .about p {
-      margin: 0;
-      co
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>FefeX Gaming | Hivatalos Oldal</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<!-- Betöltő -->
+<div id="loader">
+    <h1>FefeX Gaming</h1>
+    <p>Betöltés...</p>
+</div>
+
+
+<!-- Navigáció -->
+
+<header>
+
+<div class="logo">
+🎮 FefeX Gaming
+</div>
+
+<nav>
+<a href="#home">Kezdőlap</a>
+<a href="#videos">Videók</a>
+<a href="#shorts">Shorts</a>
+<a href="#stats">Statisztika</a>
+<a href="#about">Rólam</a>
+</nav>
+
+<div class="menu">
+☰
+</div>
+
+</header>
+
+
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+<div class="hero-content">
+
+<h1>
+FEFEX GAMING
+</h1>
+
+<h2>
+<span id="typing"></span>
+</h2>
+
+
+<p>
+Gaming videók, kihívások és szórakozás egy helyen 🎮
+</p>
+
+
+<div class="buttons">
+
+<a href="https://www.youtube.com/" target="_blank">
+▶ YouTube
+</a>
+
+<a href="#videos">
+Videók
+</a>
+
+</div>
+
+</div>
+
+
+<div class="hero-circle"></div>
+
+</section>
+
+
+
+
+<!-- STATISZTIKA -->
+
+<section id="stats" class="stats">
+
+
+<div class="stat-box">
+
+<h2 class="counter" data-target="306">
+0
+</h2>
+
+<p>
+👥 Feliratkozó
+</p>
+
+</div>
+
+
+
+<div class="stat-box">
+
+<h2 class="counter" data-target="142">
+0
+</h2>
+
+<p>
+🎥 Videó
+</p>
+
+</div>
+
+
+
+<div class="stat-box">
+
+<h2 class="counter" data-target="58000">
+0
+</h2>
+
+<p>
+👀 Megtekintés
+</p>
+
+</div>
+
+
+
+<div class="stat-box">
+
+<h2>
+2023
+</h2>
+
+<p>
+⭐ Indult
+</p>
+
+</div>
+
+
+</section>
+
+
+
+
+
+<!-- VIDEÓK -->
+
+
+<section id="videos">
+
+<h1 class="title">
+🎥 Legújabb videók
+</h1>
+
+
+<div class="video-grid">
+
+
+<div class="video-card">
+
+<img src="assets/thumbnails/video1.jpg">
+
+<div class="play">
+▶
+</div>
+
+<h3>
+Bus Simulator EVO
+</h3>
+
+<p>
+Új rész érkezett!
+</p>
+
+</div>
+
+
+
+<div class="video-card">
+
+<img src="assets/thumbnails/video2.jpg">
+
+<div class="play">
+▶
+</div>
+
+<h3>
+Minecraft Kaland
+</h3>
+
+<p>
+Építés és túlélés
+</p>
+
+</div>
+
+
+
+
+<div class="video-card">
+
+<img src="assets/thumbnails/video3.jpg">
+
+<div class="play">
+▶
+</div>
+
+<h3>
+Gaming Challenge
+</h3>
+
+<p>
+Vicces pillanatok
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+
+
+
+<!-- SHORTS -->
+
+
+<section id="shorts">
+
+
+<h1 class="title">
+📱 Shorts
+</h1>
+
+
+<div class="short-grid">
+
+
+<div class="short-card">
+▶ Short 1
+</div>
+
+
+<div class="short-card">
+▶ Short 2
+</div>
+
+
+<div class="short-card">
+▶ Short 3
+</div>
+
+
+<div class="short-card">
+▶ Short 4
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+<!-- MÉRFÖLDKÖVEK -->
+
+
+<section class="milestones">
+
+
+<h1 class="title">
+🏆 Mérföldkövek
+</h1>
+
+
+<div class="timeline">
+
+
+<div>
+100 Feliratkozó ✔
+</div>
+
+
+<div>
+250 Feliratkozó ✔
+</div>
+
+
+<div>
+500 Feliratkozó
+</div>
+
+
+<div>
+1000 Feliratkozó
+</div>
+
+
+<div>
+5000 Feliratkozó
+</div>
+
+
+<div>
+10000 Feliratkozó
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+<!-- RÓLAM -->
+
+
+<section id="about">
+
+
+<h1 class="title">
+🎮 FefeX Gaming
+</h1>
+
+
+<p class="about-text">
+
+Üdvözöllek a FefeX Gaming hivatalos oldalán!
+Itt megtalálod a legújabb videókat,
+shortokat és minden fontos információt.
+
+</p>
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- MINI JÁTÉK -->
+
+
+<section class="game">
+
+
+<h1 class="title">
+🎮 Mini játék
+</h1>
+
+
+<button id="gameButton">
+
+Kattints rám!
+
+</button>
+
+
+<p id="score">
+Pont: 0
+</p>
+
+
+</section>
+
+
+
+
+
+
+
+<!-- KAPCSOLAT -->
+
+
+<section class="social">
+
+
+<h1 class="title">
+🌐 Kövess engem
+</h1>
+
+
+<div class="social-buttons">
+
+
+<a>
+YouTube
+</a>
+
+
+<a>
+TikTok
+</a>
+
+
+<a>
+Instagram
+</a>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+<footer>
+
+<p>
+© 2026 FefeX Gaming | Minden jog fenntartva
+</p>
+
+</footer>
+
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
